@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MovieDB</string>
     <string name="btn_hit">Hit API</string>
+    <string name="movie_id">Movie ID</string>
 </resources>
