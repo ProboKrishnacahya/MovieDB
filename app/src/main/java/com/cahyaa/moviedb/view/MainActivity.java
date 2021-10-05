@@ -3,13 +3,16 @@ package com.cahyaa.moviedb.view;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.cahyaa.moviedb.R;
+import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.viewmodel.MovieViewModel;
 import com.google.android.material.textfield.TextInputLayout;
@@ -17,8 +20,9 @@ import com.google.android.material.textfield.TextInputLayout;
 public class MainActivity extends AppCompatActivity {
 
     private MovieViewModel viewModel;
-    private Button btn_hit;
     private TextInputLayout til_movie_id;
+    private Button btn_hit;
+    private ImageView img_poster;
     private TextView txt_show;
 
     @Override
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         til_movie_id = findViewById(R.id.til_movie_id_main);
+        img_poster = findViewById(R.id.img_poster_main);
         txt_show = findViewById(R.id.txt_show_main);
         viewModel = new ViewModelProvider(MainActivity.this).get(MovieViewModel.class);
 
@@ -53,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 txt_show.setText("Movie ID is not available in MovieDB");
             } else {
                 String title = movies.getTitle();
+                String img_path = Const.IMG_URL + movies.getPoster_path().toString();
+                Glide.with(MainActivity.this).load(img_path).into(img_poster);
                 txt_show.setText(title);
             }
         }

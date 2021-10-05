@@ -15,7 +15,7 @@ public class ApiService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        return  retrofit.create(ApiEndPoint.class);
+        return retrofit.create(ApiEndPoint.class);
     }
 
 }
