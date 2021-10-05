@@ -50,13 +50,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onChanged(Movies movies) {
             if (movies == null) {
-                txt_show.setText("Movie ID is not available in MovieDb");
+                txt_show.setText("Movie ID is not available in MovieDB");
             } else {
                 String title = movies.getTitle();
                 txt_show.setText(title);
             }
-            String title = movies.getTitle();
-            txt_show.setText(title);
         }
     };
 
