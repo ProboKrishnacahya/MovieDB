@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onChanged(Movies movies) {
             if (movies == null) {
-                txt_show.setText("Movie ID is not available in MovieDB");
+                txt_show.setText(R.string.null_movie_id);
             } else {
                 String title = movies.getTitle();
                 String img_path = Const.IMG_URL + movies.getPoster_path().toString();
