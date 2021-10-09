@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MovieDBTextView">
+        <item name="fontFamily">@font/rubik</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="MovieDBTextView.Header">
+        <item name="fontFamily">@font/rubik_bold</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="MovieDBTextView.Button">
+        <item name="fontFamily">@font/rubik_medium</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+</resources>
