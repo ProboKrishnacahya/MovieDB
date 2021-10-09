@@ -5,6 +5,6 @@
     <color name="colorSecondary">#283593</color>
     <color name="colorTextPrimary">#FFFFFF</color>
     <color name="colorTextSecondary">#000000</color>
-    <color name="colorCard">#EFEFEF</color>
+    <color name="colorCard">#2B2B2B</color>
     <color name="mtrl_textinput_default_box_stroke_color">@color/colorPrimary</color>
 </resources>
