@@ -10,21 +10,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.cahyaa.moviedb.R;
+import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.NowPlaying;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.CardViewViewHolder> {
 
     private Context context;
-    private ArrayList<NowPlaying.Results> listNowPlaying;
+    private List<NowPlaying.Results> listNowPlaying;
 
-    private ArrayList<NowPlaying.Results> getListNowPlaying() {
+    private List<NowPlaying.Results> getListNowPlaying() {
         return listNowPlaying;
     }
 
-    public void setListNowPlaying(ArrayList<NowPlaying.Results> listNowPlaying) {
+    public void setListNowPlaying(List<NowPlaying.Results> listNowPlaying) {
         this.listNowPlaying = listNowPlaying;
     }
 
@@ -45,6 +47,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         holder.lbl_title.setText(results.getTitle());
         holder.lbl_overview.setText(results.getOverview());
         holder.lbl_release_date.setText(results.getRelease_date());
+        Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
     }
 
     @Override

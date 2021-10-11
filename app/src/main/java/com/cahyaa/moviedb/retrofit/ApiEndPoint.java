@@ -1,6 +1,7 @@
 package com.cahyaa.moviedb.retrofit;
 
 import com.cahyaa.moviedb.model.Movies;
+import com.cahyaa.moviedb.model.NowPlaying;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,4 +16,8 @@ public interface ApiEndPoint {
             @Query("api_key") String apiKey
     );
 
+    @GET("movie/now_playing")
+    Call<NowPlaying> getNowPlaying(
+            @Query("api_key") String apiKey
+    );
 }

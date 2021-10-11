@@ -78,9 +78,11 @@
 
             <View
                 android:id="@+id/divider"
-                android:layout_width="5dp"
+                android:layout_width="7dp"
                 android:layout_height="0dp"
                 android:background="?android:attr/listDivider"
+                android:backgroundTint="@color/colorSecondary"
+                android:backgroundTintMode="add"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

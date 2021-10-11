@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.cahyaa.moviedb.model.Movies;
+import com.cahyaa.moviedb.model.NowPlaying;
 import com.cahyaa.moviedb.repositories.MovieRepository;
 
 public class MovieViewModel extends AndroidViewModel {
@@ -31,4 +32,15 @@ public class MovieViewModel extends AndroidViewModel {
     }
     //End of ViewModel getMovieById
 
+    //*Begin of ViewModel getNowPlaying
+    private MutableLiveData<NowPlaying> resultGetNowPlaying = new MutableLiveData<>();
+
+    public void getNowPlaying() {
+        resultGetNowPlaying = repository.getNowPlayingData();
+    }
+
+    public LiveData<NowPlaying> getResultGetNowPlaying() {
+        return resultGetNowPlaying;
+    }
+    //End of ViewModel getNowPlaying
 }
