@@ -26,16 +26,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/img_poster_card_nowplaying"
                 android:layout_width="88dp"
                 android:layout_height="104dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/MovieDBImageView"
                 app:srcCompat="@drawable/image" />
 
             <TextView
@@ -59,6 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:maxLines="2"
                 android:text="@string/subtitle"
                 android:textColor="@color/colorTextPrimary"
                 app:layout_constraintEnd_toEndOf="@+id/lbl_title_card_nowplaying"
