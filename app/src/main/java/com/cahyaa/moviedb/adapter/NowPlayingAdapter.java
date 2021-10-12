@@ -1,6 +1,7 @@
 package com.cahyaa.moviedb.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cahyaa.moviedb.R;
 import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.NowPlaying;
+import com.cahyaa.moviedb.view.MovieDetailsActivity;
 
 import java.util.List;
 
@@ -48,6 +51,14 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         holder.lbl_overview.setText(results.getOverview());
         holder.lbl_release_date.setText(results.getRelease_date());
         Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
+        holder.cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                intent.putExtra("movie_id", "" + results.getId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -57,7 +68,8 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView img_poster;
-        TextView lbl_title, lbl_overview, lbl_release_date;
+        TextView lbl_title, lbl_overview, lbl_release_date, lbl_rating;
+        CardView cv;
 
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,7 +77,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
             lbl_title = itemView.findViewById(R.id.lbl_title_card_nowplaying);
             lbl_overview = itemView.findViewById(R.id.lbl_overview_card_nowplaying);
             lbl_release_date = itemView.findViewById(R.id.lbl_releasedate_card_nowplaying);
-
+            cv = itemView.findViewById(R.id.cv_card_nowplaying);
         }
     }
 }

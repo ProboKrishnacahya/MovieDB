@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieDB">
         <activity
+            android:name=".view.MovieDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.NowPlayingActivity"
             android:exported="true">
             <intent-filter>

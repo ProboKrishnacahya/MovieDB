@@ -2,7 +2,7 @@
 <resources>
     <color name="colorBackground">#202020</color>
     <color name="colorPrimary">#FFEB3B</color>
-    <color name="colorSecondary">#FFD600</color>
+    <color name="colorSecondary">#FBC02D</color>
     <color name="colorTextPrimary">#FFFFFF</color>
     <color name="colorTextSecondary">#000000</color>
     <color name="colorCard">#2B2B2B</color>

@@ -6,4 +6,8 @@
     <string name="title">Title</string>
     <string name="subtitle">Sub Title</string>
     <string name="date">Release Date</string>
+    <string name="detail">Movie Detail</string>
+    <string name="genre">Genre</string>
+    <string name="rating">Rating</string>
+    <string name="popularity">Popularity</string>
 </resources>

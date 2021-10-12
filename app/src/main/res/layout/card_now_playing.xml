@@ -80,11 +80,11 @@
                 app:layout_constraintStart_toStartOf="@+id/lbl_overview_card_nowplaying" />
 
             <View
-                android:id="@+id/divider"
+                android:id="@+id/divider_card_nowplaying"
                 android:layout_width="7dp"
                 android:layout_height="0dp"
                 android:background="?android:attr/listDivider"
-                android:backgroundTint="@color/colorSecondary"
+                android:backgroundTint="@color/colorPrimary"
                 android:backgroundTintMode="add"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
