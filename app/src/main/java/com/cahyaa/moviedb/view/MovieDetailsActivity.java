@@ -54,6 +54,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private Observer<Movies> showResultMovie = new Observer<Movies>() {
         @Override
         public void onChanged(Movies movies) {
+            binding.toolbarMoviedetails.setTitle(movies.getTitle());
             String backdrop_path = Const.IMG_URL + movies.getBackdrop_path().toString();
             Glide.with(MovieDetailsActivity.this).load(backdrop_path).into(binding.imgBackdropMoviedetails);
             String poster_path = Const.IMG_URL + movies.getPoster_path().toString();
@@ -85,7 +86,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
     };
 
     private Observer<Credits> showResultCredits = new Observer<Credits>() {
-
         @Override
         public void onChanged(Credits credits) {
             CreditsAdapter adapter = new CreditsAdapter(MovieDetailsActivity.this);

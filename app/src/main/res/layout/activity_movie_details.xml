@@ -41,12 +41,13 @@
 
             <ImageView
                 android:id="@+id/img_backdrop_moviedetails"
-                android:layout_width="410dp"
-                android:layout_height="240dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:foreground="@drawable/gradient_foreground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar_moviedetails"
+                app:layout_constraintDimensionRatio="16:9"
                 app:srcCompat="@drawable/image" />
 
             <com.google.android.material.imageview.ShapeableImageView
