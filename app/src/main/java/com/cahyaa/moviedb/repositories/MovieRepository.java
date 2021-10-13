@@ -3,6 +3,7 @@ package com.cahyaa.moviedb.repositories;
 import androidx.lifecycle.MutableLiveData;
 
 import com.cahyaa.moviedb.helper.Const;
+import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.model.NowPlaying;
 import com.cahyaa.moviedb.retrofit.ApiService;
@@ -54,6 +55,24 @@ public class MovieRepository {
 
             @Override
             public void onFailure(Call<NowPlaying> call, Throwable t) {
+
+            }
+        });
+
+        return result;
+    }
+
+    public MutableLiveData<Credits> getCreditsData(String movieId) {
+        final MutableLiveData<Credits> result = new MutableLiveData<>();
+
+        ApiService.endPoint().getCredits(movieId, Const.API_KEY).enqueue(new Callback<Credits>() {
+            @Override
+            public void onResponse(Call<Credits> call, Response<Credits> response) {
+                result.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Credits> call, Throwable t) {
 
             }
         });

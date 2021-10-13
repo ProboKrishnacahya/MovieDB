@@ -1,5 +1,6 @@
 package com.cahyaa.moviedb.retrofit;
 
+import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.model.NowPlaying;
 
@@ -17,6 +18,12 @@ public interface ApiEndPoint {
 
     @GET("movie/now_playing")
     Call<NowPlaying> getNowPlaying(
+            @Query("api_key") String apiKey
+    );
+
+    @GET("movie/{movie_id}/credits")
+    Call<Credits> getCredits(
+            @Path("movie_id") String movieId,
             @Query("api_key") String apiKey
     );
 }

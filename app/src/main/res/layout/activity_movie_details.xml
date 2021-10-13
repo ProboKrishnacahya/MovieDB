@@ -26,7 +26,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_moviedetails"
-                android:layout_width="409dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
@@ -35,14 +35,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:navigationIcon="@drawable/back"
-                app:title="@string/detail"
+                app:title="@string/txt_movie_details"
                 app:titleTextAppearance="@style/MovieDBTextView.Button"
                 app:titleTextColor="@color/colorTextSecondary" />
 
             <ImageView
                 android:id="@+id/img_backdrop_moviedetails"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_width="410dp"
+                android:layout_height="240dp"
+                android:foreground="@drawable/gradient_foreground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar_moviedetails"
@@ -61,43 +62,65 @@
                 app:srcCompat="@drawable/image" />
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/linearLayout_popularity_rating_moviedetails"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_poster_moviedetails"
-                app:layout_constraintTop_toTopOf="@+id/img_poster_moviedetails">
-
-                <TextView
-                    android:id="@+id/lbl_popularity_moviedetails"
-                    style="@style/MovieDBTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="8dp"
-                    android:gravity="center"
-                    android:paddingStart="0dp"
-                    android:paddingEnd="24dp"
-                    android:text="@string/popularity"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textSize="16sp"
-                    app:drawableStartCompat="@drawable/popularity"
-                    app:drawableTint="@color/colorPrimary" />
+                app:layout_constraintBottom_toBottomOf="@+id/img_backdrop_moviedetails"
+                app:layout_constraintEnd_toEndOf="@+id/img_backdrop_moviedetails"
+                app:layout_constraintStart_toStartOf="@+id/img_backdrop_moviedetails">
 
                 <TextView
                     android:id="@+id/lbl_rating_moviedetails"
                     style="@style/MovieDBTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
                     android:drawablePadding="8dp"
                     android:gravity="center"
-                    android:text="@string/rating"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="24dp"
+                    android:text="@string/lbl_rating"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="16sp"
                     app:drawableStartCompat="@drawable/rating"
                     app:drawableTint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lbl_vote_count"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:text="@string/lbl_vote_count"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/vote_count"
+                    app:drawableTint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lbl_popularity_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="0dp"
+                    android:text="@string/lbl_popularity"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/popularity"
+                    app:drawableTint="@color/colorPrimary" />
+
             </LinearLayout>
 
             <TextView
@@ -105,66 +128,200 @@
                 style="@style/MovieDBTextView.Header"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/title"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/lbl_title"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_poster_moviedetails"
+                app:layout_constraintTop_toTopOf="@+id/img_poster_moviedetails" />
+
+            <TextView
+                android:id="@+id/lbl_runtime_moviedetails"
+                style="@style/MovieDBTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="8dp"
+                android:text="@string/lbl_runtime"
+                android:textColor="@color/colorTextPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_title_moviedetails"
+                app:layout_constraintStart_toStartOf="@+id/lbl_title_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_title_moviedetails" />
 
             <View
-                android:id="@+id/divider_moviedetails"
+                android:id="@+id/divider1_moviedetails"
                 android:layout_width="0dp"
                 android:layout_height="2.5dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
                 android:background="?android:attr/listDivider"
                 android:backgroundTint="@color/colorPrimary"
                 android:backgroundTintMode="add"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_genre_moviedetails"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_poster_moviedetails" />
 
-            <TextView
-                android:id="@+id/lbl_genre_moviedetails"
-                style="@style/MovieDBTextView"
+            <LinearLayout
+                android:id="@+id/linearLayout_language_moviedetails"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/genre"
-                android:textColor="@color/colorTextPrimary"
-                app:layout_constraintEnd_toEndOf="@+id/divider_moviedetails"
-                app:layout_constraintStart_toStartOf="@+id/divider_moviedetails"
-                app:layout_constraintTop_toBottomOf="@+id/divider_moviedetails" />
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider1_moviedetails">
 
-            <TextView
-                android:id="@+id/lbl_overview_moviedetails"
-                style="@style/MovieDBTextView"
+                <TextView
+                    android:id="@+id/txt_language_moviedetails"
+                    style="@style/MovieDBTextView.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_language"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/lbl_language_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_language" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_genre_moviedetails"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/overview"
-                android:textColor="@color/colorTextPrimary"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_genre_moviedetails"
-                app:layout_constraintStart_toStartOf="@+id/lbl_genre_moviedetails"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_genre_moviedetails" />
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_language_moviedetails"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_language_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_language_moviedetails">
+
+                <TextView
+                    android:id="@+id/txt_genre_moviedetails"
+                    style="@style/MovieDBTextView.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_genre"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lbl_genre_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_genre" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_tagline_moviedetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_genre_moviedetails"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_genre_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_genre_moviedetails">
+
+                <TextView
+                    android:id="@+id/txt_tagline_moviedetails"
+                    style="@style/MovieDBTextView.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_tagline"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/lbl_tagline_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_tagline" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_overview_moviedetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_tagline_moviedetails"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_tagline_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_tagline_moviedetails">
+
+                <TextView
+                    android:id="@+id/txt_overview_moviedetails"
+                    style="@style/MovieDBTextView.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_overview"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/lbl_overview_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_overview" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/lbl_id_moviedetails"
                 style="@style/MovieDBTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
                 android:text="@string/movie_id"
                 android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_overview_moviedetails" />
+
+            <Button
+                android:id="@+id/btn_homepage_moviedetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/button"
+                android:text="Homepage"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextSecondary"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/lbl_overview_moviedetails"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_overview_moviedetails" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvCredits" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCredits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_id_moviedetails"
+                tools:listitem="@layout/card_cast_movie_details" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

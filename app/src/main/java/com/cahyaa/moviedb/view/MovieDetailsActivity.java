@@ -1,6 +1,7 @@
 package com.cahyaa.moviedb.view;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,8 +10,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
+import com.cahyaa.moviedb.adapter.CreditsAdapter;
 import com.cahyaa.moviedb.databinding.ActivityMovieDetailsBinding;
 import com.cahyaa.moviedb.helper.Const;
+import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.viewmodel.MovieViewModel;
 
@@ -44,6 +47,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
         view_model = new ViewModelProvider(MovieDetailsActivity.this).get(MovieViewModel.class);
         view_model.getMovieById(movie_id);
         view_model.getResultGetMovieById().observe(MovieDetailsActivity.this, showResultMovie);
+        view_model.getCredits(movie_id);
+        view_model.getResultGetCredits().observe(MovieDetailsActivity.this, showResultCredits);
     }
 
     private Observer<Movies> showResultMovie = new Observer<Movies>() {
@@ -60,13 +65,32 @@ public class MovieDetailsActivity extends AppCompatActivity {
                     movie_genre += movies.getGenres().get(i).getName() + " | ";
                 }
             }
-            binding.lblTitleMoviedetails.setText(movies.getTitle());
-            binding.lblOverviewMoviedetails.setText(movies.getOverview());
-            binding.lblGenreMoviedetails.setText(movie_genre);
+            binding.lblRatingMoviedetails.setText(movies.getVote_average() + "/10");
+            binding.lblVoteCount.setText(String.valueOf(movies.getVote_count()));
             binding.lblPopularityMoviedetails.setText(String.valueOf(movies.getPopularity()));
-            binding.lblRatingMoviedetails.setText(movies.getVote_average() + "-" + movies.getVote_count());
-//            lbl_rating_count.setText("Rating Count: " + movies.getVote_count());
+            binding.lblTitleMoviedetails.setText(movies.getTitle());
+            binding.lblTaglineMoviedetails.setText(movies.getTagline());
+            binding.lblRuntimeMoviedetails.setText("Runtime: " + movies.getRuntime());
+            binding.lblLanguageMoviedetails.setText(movies.getOriginal_language());
+            binding.lblGenreMoviedetails.setText(movie_genre);
+            binding.lblOverviewMoviedetails.setText(movies.getOverview());
             binding.lblIdMoviedetails.setText("Movie ID: " + movie_id);
+            binding.btnHomepageMoviedetails.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(movies.getHomepage())));
+                }
+            });
+        }
+    };
+
+    private Observer<Credits> showResultCredits = new Observer<Credits>() {
+
+        @Override
+        public void onChanged(Credits credits) {
+            CreditsAdapter adapter = new CreditsAdapter(MovieDetailsActivity.this);
+            adapter.setListNowPlaying(credits.getCast());
+            binding.rvCredits.setAdapter(adapter);
         }
     };
 
