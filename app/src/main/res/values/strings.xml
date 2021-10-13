@@ -4,9 +4,9 @@
     <string name="movie_id">Movie ID</string>
     <string name="null_movie_id">Movie ID is not available in MovieDB.</string>
     <string name="title">Title</string>
-    <string name="subtitle">Sub Title</string>
-    <string name="date">Release Date</string>
-    <string name="detail">Movie Detail</string>
+    <string name="overview">Overview</string>
+    <string name="release_date">Release Date</string>
+    <string name="detail">Movie Details</string>
     <string name="genre">Genre</string>
     <string name="rating">Rating</string>
     <string name="popularity">Popularity</string>
