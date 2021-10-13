@@ -18,9 +18,10 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     private ActivityMovieDetailsBinding binding;
 
+    private MovieViewModel view_model;
+
     private String movie_id = "";
     private String movie_genre = "";
-    private MovieViewModel view_model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
