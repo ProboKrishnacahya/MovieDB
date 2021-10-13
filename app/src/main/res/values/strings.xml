@@ -27,4 +27,5 @@
     <string name="lbl_tagline">%sTagline</string>
     <string name="character_name_moviedetails">Character Name</string>
     <string name="cast_name_moviedetails">Cast Name</string>
+    <string name="homepage">Homepage</string>
 </resources>

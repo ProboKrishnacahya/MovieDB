@@ -138,19 +138,6 @@
                 app:layout_constraintStart_toEndOf="@+id/img_poster_moviedetails"
                 app:layout_constraintTop_toTopOf="@+id/img_poster_moviedetails" />
 
-            <TextView
-                android:id="@+id/lbl_runtime_moviedetails"
-                style="@style/MovieDBTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:drawablePadding="8dp"
-                android:text="@string/lbl_runtime"
-                android:textColor="@color/colorTextPrimary"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_title_moviedetails"
-                app:layout_constraintStart_toStartOf="@+id/lbl_title_moviedetails"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_title_moviedetails" />
-
             <View
                 android:id="@+id/divider1_moviedetails"
                 android:layout_width="0dp"
@@ -281,28 +268,19 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/lbl_id_moviedetails"
-                style="@style/MovieDBTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/movie_id"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_overview_moviedetails" />
-
             <Button
                 android:id="@+id/btn_homepage_moviedetails"
+                style="@style/MovieDBTextView.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/button"
-                android:text="Homepage"
+                android:includeFontPadding="true"
+                android:letterSpacing="0.05"
+                android:text="@string/homepage"
                 android:textAllCaps="false"
                 android:textColor="@color/colorTextSecondary"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -321,8 +299,37 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_id_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_overview_moviedetails"
                 tools:listitem="@layout/card_cast_movie_details" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_title_moviedetails"
+                app:layout_constraintStart_toStartOf="@+id/lbl_title_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_title_moviedetails">
+
+                <TextView
+                    android:id="@+id/lbl_id_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/movie_id"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/lbl_runtime_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:text="@string/lbl_runtime"
+                    android:textColor="@color/colorTextPrimary" />
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -5,7 +5,7 @@
     <color name="colorSecondary">#FBC02D</color>
     <color name="colorTextPrimary">#FFFFFF</color>
     <color name="colorTextSecondary">#000000</color>
-    <color name="colorCard">#2B2B2B</color>
+    <color name="colorCard">#333333</color>
     <color name="mtrl_textinput_default_box_stroke_color">@color/colorPrimary</color>
     <color name="colorGradient">#40000000</color>
 </resources>
