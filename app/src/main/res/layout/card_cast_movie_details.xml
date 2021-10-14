@@ -2,11 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="150dp"
     android:layout_height="250dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
+    android:layout_marginStart="0dp"
+    android:layout_marginTop="0dp"
+    android:layout_marginEnd="16dp"
     app:cardBackgroundColor="@color/colorCard"
     app:cardCornerRadius="10dp"
     app:cardElevation="1dp">
@@ -18,37 +18,46 @@
         <ImageView
             android:id="@+id/img_cast_moviedetails"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="150dp"
+            android:background="@drawable/credits"
+            android:contentDescription="@string/img_cast"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="3:4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/image" />
+            app:srcCompat="@drawable/credits" />
 
         <TextView
-            android:id="@+id/lbl_character_moviedetails"
-            style="@style/MovieDBTextView"
-            android:layout_width="wrap_content"
+            android:id="@+id/lbl_cast_moviedetails"
+            style="@style/MovieDBTextView.Button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/character_name_moviedetails"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@string/lbl_cast_name"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_cast_moviedetails" />
 
         <TextView
-            android:id="@+id/lbl_cast_moviedetails"
+            android:id="@+id/lbl_character_moviedetails"
             style="@style/MovieDBTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/cast_name_moviedetails"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/lbl_character_name"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/lbl_character_moviedetails"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_character_moviedetails" />
+            app:layout_constraintEnd_toEndOf="@+id/lbl_cast_moviedetails"
+            app:layout_constraintStart_toStartOf="@+id/lbl_cast_moviedetails"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_cast_moviedetails" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

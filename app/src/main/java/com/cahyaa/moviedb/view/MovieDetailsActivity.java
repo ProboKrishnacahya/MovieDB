@@ -25,6 +25,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     private String movie_id = "";
     private String movie_genre = "";
+    private String movie_tagline = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +55,12 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private Observer<Movies> showResultMovie = new Observer<Movies>() {
         @Override
         public void onChanged(Movies movies) {
-            binding.toolbarMoviedetails.setTitle(movies.getTitle());
             String backdrop_path = Const.IMG_URL + movies.getBackdrop_path().toString();
             Glide.with(MovieDetailsActivity.this).load(backdrop_path).into(binding.imgBackdropMoviedetails);
+
             String poster_path = Const.IMG_URL + movies.getPoster_path().toString();
             Glide.with(MovieDetailsActivity.this).load(poster_path).into(binding.imgPosterMoviedetails);
+
             for (int i = 0; i < movies.getGenres().size(); i++) {
                 if (i == movies.getGenres().size() - 1) {
                     movie_genre += movies.getGenres().get(i).getName();
@@ -66,16 +68,24 @@ public class MovieDetailsActivity extends AppCompatActivity {
                     movie_genre += movies.getGenres().get(i).getName() + " | ";
                 }
             }
+
+            if (movies.getTagline().isEmpty()) {
+                binding.lblTaglineMoviedetails.setText("-");
+            } else {
+                binding.lblTaglineMoviedetails.setText(movies.getTagline());
+            }
+
+            binding.toolbarMoviedetails.setTitle(movies.getTitle());
             binding.lblRatingMoviedetails.setText(movies.getVote_average() + "/10");
             binding.lblVoteCount.setText(String.valueOf(movies.getVote_count()));
             binding.lblPopularityMoviedetails.setText(String.valueOf(movies.getPopularity()));
             binding.lblTitleMoviedetails.setText(movies.getTitle());
-            binding.lblTaglineMoviedetails.setText(movies.getTagline());
             binding.lblRuntimeMoviedetails.setText("Runtime: " + movies.getRuntime());
-            binding.lblLanguageMoviedetails.setText(movies.getOriginal_language());
+            binding.lblLanguageMoviedetails.setText(movies.getOriginal_language() + " (ISO 639-1)");
             binding.lblGenreMoviedetails.setText(movie_genre);
             binding.lblOverviewMoviedetails.setText(movies.getOverview());
             binding.lblIdMoviedetails.setText("Movie ID: " + movie_id);
+
             binding.btnHomepageMoviedetails.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

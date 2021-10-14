@@ -25,7 +25,9 @@
     <string name="lbl_genre">%sGenre</string>
     <string name="txt_tagline">Tagline</string>
     <string name="lbl_tagline">%sTagline</string>
-    <string name="character_name_moviedetails">Character Name</string>
-    <string name="cast_name_moviedetails">Cast Name</string>
-    <string name="homepage">Homepage</string>
+    <string name="lbl_character_name">Character Name</string>
+    <string name="lbl_cast_name">Cast Name</string>
+    <string name="btn_homepage">Homepage</string>
+    <string name="img_backdrop">Backdrop Path</string>
+    <string name="img_cast">Profile Path</string>
 </resources>
