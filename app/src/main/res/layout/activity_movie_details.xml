@@ -150,23 +150,33 @@
                 app:layout_constraintTop_toBottomOf="@+id/lbl_title_moviedetails">
 
                 <TextView
+                    android:id="@+id/lbl_runtime_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/lbl_runtime"
+                    android:textColor="@color/colorTextPrimary"
+                    app:drawableStartCompat="@drawable/runtime"
+                    app:drawableTint="@color/colorPrimary" />
+
+                <TextView
                     android:id="@+id/lbl_id_moviedetails"
                     style="@style/MovieDBTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
                     android:paddingStart="0dp"
                     android:paddingEnd="16dp"
                     android:text="@string/movie_id"
-                    android:textColor="@color/colorTextPrimary" />
+                    android:textColor="@color/colorTextPrimary"
+                    app:drawableStartCompat="@drawable/id"
+                    app:drawableTint="@color/colorPrimary" />
 
-                <TextView
-                    android:id="@+id/lbl_runtime_moviedetails"
-                    style="@style/MovieDBTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="8dp"
-                    android:text="@string/lbl_runtime"
-                    android:textColor="@color/colorTextPrimary" />
             </LinearLayout>
 
             <LinearLayout
@@ -192,7 +202,7 @@
                 <TextView
                     android:id="@+id/lbl_adult_moviedetails"
                     style="@style/MovieDBTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
                     android:text="@string/lbl_adult"

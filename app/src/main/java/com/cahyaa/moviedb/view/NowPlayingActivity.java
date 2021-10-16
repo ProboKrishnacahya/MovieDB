@@ -49,7 +49,7 @@ public class NowPlayingActivity extends AppCompatActivity {
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView img_poster;
-        TextView lbl_title, lbl_overview, lbl_release_date, lbl_status;
+        TextView lbl_title, lbl_overview, lbl_release_date;
         CardView cv;
 
         public CardViewViewHolder(@NonNull View itemView) {

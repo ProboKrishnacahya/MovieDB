@@ -21,8 +21,8 @@
     <string name="lbl_runtime">%sRuntime</string>
     <string name="lbl_video">%sVideo</string>
     <string name="lbl_adult">%sAdult</string>
-    <string name="txt_language">Language</string>
-    <string name="lbl_language">%sLanguage</string>
+    <string name="txt_language">Spoken Language</string>
+    <string name="lbl_language">%sSpoken Language</string>
     <string name="txt_genre">Genre</string>
     <string name="lbl_genre">%sGenre</string>
     <string name="txt_tagline">Tagline</string>
@@ -32,4 +32,8 @@
     <string name="btn_homepage">Homepage</string>
     <string name="img_backdrop">Backdrop Path</string>
     <string name="img_cast">Profile Path</string>
+    <string name="video_true">Video: Yes</string>
+    <string name="video_false">Video: No</string>
+    <string name="adult_true">Adult: Yes</string>
+    <string name="adult_false">Adult: No</string>
 </resources>
