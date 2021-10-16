@@ -48,7 +48,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar_moviedetails"
                 app:layout_constraintDimensionRatio="16:9"
-                app:srcCompat="@drawable/image" />
+                app:srcCompat="@drawable/poster_backdrop" />
 
             <LinearLayout
                 android:id="@+id/linearLayout_popularity_rating_moviedetails"
@@ -57,6 +57,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/img_backdrop_moviedetails"
                 app:layout_constraintEnd_toEndOf="@+id/img_backdrop_moviedetails"
@@ -115,14 +116,14 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/img_poster_moviedetails"
                 android:layout_width="120dp"
-                android:layout_height="136dp"
+                android:layout_height="170dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_backdrop_moviedetails"
                 app:shapeAppearanceOverlay="@style/MovieDBImageView"
-                app:srcCompat="@drawable/image" />
+                app:srcCompat="@drawable/poster_backdrop" />
 
             <TextView
                 android:id="@+id/lbl_title_moviedetails"
@@ -165,6 +166,36 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
                     android:text="@string/lbl_runtime"
+                    android:textColor="@color/colorTextPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_video_adult_moviedetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_id_runtime_moviedetails"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_id_runtime_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_id_runtime_moviedetails">
+
+                <TextView
+                    android:id="@+id/lbl_video_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/lbl_video"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/lbl_adult_moviedetails"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:text="@string/lbl_adult"
                     android:textColor="@color/colorTextPrimary" />
             </LinearLayout>
 

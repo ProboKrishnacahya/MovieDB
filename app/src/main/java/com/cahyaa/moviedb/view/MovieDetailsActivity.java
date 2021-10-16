@@ -25,7 +25,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     private String movie_id = "";
     private String movie_genre = "";
-    private String movie_tagline = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         view_model.getResultGetCredits().observe(MovieDetailsActivity.this, showResultCredits);
     }
 
-    private Observer<Movies> showResultMovie = new Observer<Movies>() {
+    private final Observer<Movies> showResultMovie = new Observer<Movies>() {
         @Override
         public void onChanged(Movies movies) {
             String backdrop_path = Const.IMG_URL + movies.getBackdrop_path().toString();
@@ -80,11 +79,13 @@ public class MovieDetailsActivity extends AppCompatActivity {
             binding.lblVoteCount.setText(String.valueOf(movies.getVote_count()));
             binding.lblPopularityMoviedetails.setText(String.valueOf(movies.getPopularity()));
             binding.lblTitleMoviedetails.setText(movies.getTitle());
+            binding.lblIdMoviedetails.setText("Movie ID: " + movie_id);
             binding.lblRuntimeMoviedetails.setText("Runtime: " + movies.getRuntime());
+            binding.lblVideoMoviedetails.setText("Video: " + movies.isVideo());
+            binding.lblAdultMoviedetails.setText("Adult: " + movies.isAdult());
             binding.lblLanguageMoviedetails.setText(movies.getOriginal_language() + " (ISO 639-1)");
             binding.lblGenreMoviedetails.setText(movie_genre);
             binding.lblOverviewMoviedetails.setText(movies.getOverview());
-            binding.lblIdMoviedetails.setText("Movie ID: " + movie_id);
 
             binding.btnHomepageMoviedetails.setOnClickListener(new View.OnClickListener() {
                 @Override

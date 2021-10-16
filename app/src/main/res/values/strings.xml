@@ -19,6 +19,8 @@
     <string name="lbl_vote_count">%sVote Count</string>
     <string name="lbl_popularity">%sPopularity</string>
     <string name="lbl_runtime">%sRuntime</string>
+    <string name="lbl_video">%sVideo</string>
+    <string name="lbl_adult">%sAdult</string>
     <string name="txt_language">Language</string>
     <string name="lbl_language">%sLanguage</string>
     <string name="txt_genre">Genre</string>
