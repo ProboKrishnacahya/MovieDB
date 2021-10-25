@@ -1,7 +1,6 @@
 package com.cahyaa.moviedb.adapter;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -51,18 +49,18 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         holder.lbl_overview.setText(results.getOverview());
         holder.lbl_release_date.setText(results.getRelease_date());
         Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
-        holder.cv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        holder.cv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //                Intent intent = new Intent(context, MovieDetailsActivity.class);
 //                intent.putExtra("movie_id", "" + results.getId());
 //                context.startActivity(intent);
 
-                Bundle bundle = new Bundle();
-                bundle.putString("movieId", "" + results.getId());
-                Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
-            }
-        });
+//                Bundle bundle = new Bundle();
+//                bundle.putString("movieId", "" + results.getId());
+//                Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
+//            }
+//        });
     }
 
     @Override
