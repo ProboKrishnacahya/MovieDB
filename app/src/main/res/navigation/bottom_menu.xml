@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_menu"
+    app:startDestination="@id/nowPlayingFragment">
+
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.cahyaa.moviedb.view.fragments.MovieDetailsFragment"
+        android:label="@string/movie_details"
+        tools:layout="@layout/fragment_movie_details" >
+        <argument
+            android:name="movieId"
+            app:argType="string"
+            android:defaultValue="-" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nowPlayingFragment"
+        android:name="com.cahyaa.moviedb.view.fragments.NowPlayingFragment"
+        android:label="@string/now_playing"
+        tools:layout="@layout/fragment_now_playing" >
+        <action
+            android:id="@+id/action_nowPlayingFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/upComingFragment"
+        android:name="com.cahyaa.moviedb.view.fragments.UpComingFragment"
+        android:label="@string/up_coming"
+        tools:layout="@layout/fragment_up_coming" />
+</navigation>

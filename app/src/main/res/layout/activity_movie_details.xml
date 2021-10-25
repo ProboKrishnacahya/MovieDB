@@ -5,10 +5,10 @@
     android:id="@+id/cons_movie_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MovieDetailsActivity">
+    tools:context=".view.activities.MovieDetailsActivity">
 
     <ScrollView
-        android:id="@+id/scrollView_moviedetails"
+        android:id="@+id/scrollView_movie_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,12 +20,12 @@
         tools:ignore="SpeakableTextPresentCheck">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cons_scrollView_moviedetails"
+            android:id="@+id/cons_scrollView_movie_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_moviedetails"
+                android:id="@+id/toolbar_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
@@ -40,18 +40,18 @@
                 app:titleTextColor="@color/colorTextSecondary" />
 
             <ImageView
-                android:id="@+id/img_backdrop_moviedetails"
+                android:id="@+id/img_backdrop_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:foreground="@drawable/gradient_foreground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_movie_details"
                 app:layout_constraintDimensionRatio="16:9"
                 app:srcCompat="@drawable/poster_backdrop" />
 
             <LinearLayout
-                android:id="@+id/linearLayout_popularity_rating_moviedetails"
+                android:id="@+id/linearLayout_popularity_rating_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -59,12 +59,12 @@
                 android:layout_marginBottom="16dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/img_backdrop_moviedetails"
-                app:layout_constraintEnd_toEndOf="@+id/img_backdrop_moviedetails"
-                app:layout_constraintStart_toStartOf="@+id/img_backdrop_moviedetails">
+                app:layout_constraintBottom_toBottomOf="@+id/img_backdrop_movie_details"
+                app:layout_constraintEnd_toEndOf="@+id/img_backdrop_movie_details"
+                app:layout_constraintStart_toStartOf="@+id/img_backdrop_movie_details">
 
                 <TextView
-                    android:id="@+id/lbl_rating_moviedetails"
+                    android:id="@+id/lbl_rating_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                     app:drawableTint="@color/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/lbl_popularity_moviedetails"
+                    android:id="@+id/lbl_popularity_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -114,19 +114,19 @@
             </LinearLayout>
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/img_poster_moviedetails"
+                android:id="@+id/img_poster_movie_details"
                 android:layout_width="120dp"
                 android:layout_height="170dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_backdrop_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/img_backdrop_movie_details"
                 app:shapeAppearanceOverlay="@style/MovieDBImageView"
                 app:srcCompat="@drawable/poster_backdrop" />
 
             <TextView
-                android:id="@+id/lbl_title_moviedetails"
+                android:id="@+id/lbl_title_movie_details"
                 style="@style/MovieDBTextView.Header"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -136,21 +136,21 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_poster_moviedetails"
-                app:layout_constraintTop_toTopOf="@+id/img_poster_moviedetails" />
+                app:layout_constraintStart_toEndOf="@+id/img_poster_movie_details"
+                app:layout_constraintTop_toTopOf="@+id/img_poster_movie_details" />
 
             <LinearLayout
-                android:id="@+id/linearLayout_id_runtime_moviedetails"
+                android:id="@+id/linearLayout_id_runtime_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_title_moviedetails"
-                app:layout_constraintStart_toStartOf="@+id/lbl_title_moviedetails"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_title_moviedetails">
+                app:layout_constraintEnd_toEndOf="@+id/lbl_title_movie_details"
+                app:layout_constraintStart_toStartOf="@+id/lbl_title_movie_details"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_title_movie_details">
 
                 <TextView
-                    android:id="@+id/lbl_runtime_moviedetails"
+                    android:id="@+id/lbl_runtime_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
                     app:drawableTint="@color/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/lbl_id_moviedetails"
+                    android:id="@+id/lbl_id_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -180,17 +180,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout_video_adult_moviedetails"
+                android:id="@+id/linearLayout_video_adult_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout_id_runtime_moviedetails"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout_id_runtime_moviedetails"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_id_runtime_moviedetails">
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_id_runtime_movie_details"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_id_runtime_movie_details"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_id_runtime_movie_details">
 
                 <TextView
-                    android:id="@+id/lbl_video_moviedetails"
+                    android:id="@+id/lbl_video_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
                     android:textColor="@color/colorTextPrimary" />
 
                 <TextView
-                    android:id="@+id/lbl_adult_moviedetails"
+                    android:id="@+id/lbl_adult_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
             </LinearLayout>
 
             <View
-                android:id="@+id/divider1_moviedetails"
+                android:id="@+id/divider1_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="2.5dp"
                 android:layout_marginStart="16dp"
@@ -221,10 +221,10 @@
                 android:backgroundTintMode="add"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_poster_moviedetails" />
+                app:layout_constraintTop_toBottomOf="@+id/img_poster_movie_details" />
 
             <LinearLayout
-                android:id="@+id/linearLayout_language_moviedetails"
+                android:id="@+id/linearLayout_language_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -234,10 +234,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider1_moviedetails">
+                app:layout_constraintTop_toBottomOf="@+id/divider1_movie_details">
 
                 <TextView
-                    android:id="@+id/txt_language_moviedetails"
+                    android:id="@+id/txt_language_movie_details"
                     style="@style/MovieDBTextView.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -246,7 +246,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/lbl_language_moviedetails"
+                    android:id="@+id/lbl_language_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -254,18 +254,18 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout_genre_moviedetails"
+                android:id="@+id/linearLayout_genre_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout_language_moviedetails"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_language_movie_details"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout_language_moviedetails"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_language_moviedetails">
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_language_movie_details"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_language_movie_details">
 
                 <TextView
-                    android:id="@+id/txt_genre_moviedetails"
+                    android:id="@+id/txt_genre_movie_details"
                     style="@style/MovieDBTextView.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -277,7 +277,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/lbl_genre_moviedetails"
+                    android:id="@+id/lbl_genre_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -285,17 +285,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout_tagline_moviedetails"
+                android:id="@+id/linearLayout_tagline_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout_genre_moviedetails"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout_genre_moviedetails"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_genre_moviedetails">
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_genre_movie_details"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_genre_movie_details"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_genre_movie_details">
 
                 <TextView
-                    android:id="@+id/txt_tagline_moviedetails"
+                    android:id="@+id/txt_tagline_movie_details"
                     style="@style/MovieDBTextView.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -304,7 +304,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/lbl_tagline_moviedetails"
+                    android:id="@+id/lbl_tagline_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -312,17 +312,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout_overview_moviedetails"
+                android:id="@+id/linearLayout_overview_movie_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout_tagline_moviedetails"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout_tagline_moviedetails"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_tagline_moviedetails">
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_tagline_movie_details"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_tagline_movie_details"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_tagline_movie_details">
 
                 <TextView
-                    android:id="@+id/txt_overview_moviedetails"
+                    android:id="@+id/txt_overview_movie_details"
                     style="@style/MovieDBTextView.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -331,7 +331,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/lbl_overview_moviedetails"
+                    android:id="@+id/lbl_overview_movie_details"
                     style="@style/MovieDBTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -350,11 +350,11 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_overview_moviedetails"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_overview_movie_details"
                 tools:listitem="@layout/card_cast_movie_details" />
 
             <Button
-                android:id="@+id/btn_homepage_moviedetails"
+                android:id="@+id/btn_homepage_movie_details"
                 style="@style/MovieDBTextView.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

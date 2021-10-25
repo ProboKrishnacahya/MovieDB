@@ -1,4 +1,4 @@
-package com.cahyaa.moviedb.view;
+package com.cahyaa.moviedb.view.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -35,8 +35,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        setSupportActionBar(binding.toolbarMoviedetails);
-        binding.toolbarMoviedetails.setNavigationOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(binding.toolbarMovieDetails);
+        binding.toolbarMovieDetails.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -56,32 +56,32 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private final Observer<Movies> showResultMovie = new Observer<Movies>() {
         @Override
         public void onChanged(Movies movies) {
-            binding.toolbarMoviedetails.setTitle(movies.getTitle());
+            binding.toolbarMovieDetails.setTitle(movies.getTitle());
 
             String backdrop_path = Const.IMG_URL + movies.getBackdrop_path().toString();
-            Glide.with(MovieDetailsActivity.this).load(backdrop_path).into(binding.imgBackdropMoviedetails);
+            Glide.with(MovieDetailsActivity.this).load(backdrop_path).into(binding.imgBackdropMovieDetails);
 
-            binding.lblRatingMoviedetails.setText(movies.getVote_average() + "/10");
+            binding.lblRatingMovieDetails.setText(movies.getVote_average() + "/10");
             binding.lblVoteCount.setText(String.valueOf(movies.getVote_count()));
-            binding.lblPopularityMoviedetails.setText(String.valueOf(movies.getPopularity()));
+            binding.lblPopularityMovieDetails.setText(String.valueOf(movies.getPopularity()));
 
             String poster_path = Const.IMG_URL + movies.getPoster_path().toString();
-            Glide.with(MovieDetailsActivity.this).load(poster_path).into(binding.imgPosterMoviedetails);
+            Glide.with(MovieDetailsActivity.this).load(poster_path).into(binding.imgPosterMovieDetails);
 
-            binding.lblTitleMoviedetails.setText(movies.getTitle());
-            binding.lblRuntimeMoviedetails.setText(String.valueOf(movies.getRuntime() + "'"));
-            binding.lblIdMoviedetails.setText(movie_id);
+            binding.lblTitleMovieDetails.setText(movies.getTitle());
+            binding.lblRuntimeMovieDetails.setText(String.valueOf(movies.getRuntime() + "'"));
+            binding.lblIdMovieDetails.setText(movie_id);
 
             if (movies.isVideo()) {
-                binding.lblVideoMoviedetails.setText(R.string.video_true);
+                binding.lblVideoMovieDetails.setText(R.string.video_true);
             } else {
-                binding.lblVideoMoviedetails.setText(R.string.video_false);
+                binding.lblVideoMovieDetails.setText(R.string.video_false);
             }
 
             if (movies.isAdult()) {
-                binding.lblAdultMoviedetails.setText(R.string.adult_true);
+                binding.lblAdultMovieDetails.setText(R.string.adult_true);
             } else {
-                binding.lblAdultMoviedetails.setText(R.string.adult_false);
+                binding.lblAdultMovieDetails.setText(R.string.adult_false);
             }
 
             for (int i = 0; i < movies.getSpoken_languages().size(); i++) {
@@ -91,7 +91,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                     spoken_language += movies.getSpoken_languages().get(i).getName() + ", ";
                 }
             }
-            binding.lblLanguageMoviedetails.setText(spoken_language);
+            binding.lblLanguageMovieDetails.setText(spoken_language);
 
             for (int i = 0; i < movies.getGenres().size(); i++) {
                 if (i == movies.getGenres().size() - 1) {
@@ -100,17 +100,17 @@ public class MovieDetailsActivity extends AppCompatActivity {
                     movie_genre += movies.getGenres().get(i).getName() + " | ";
                 }
             }
-            binding.lblGenreMoviedetails.setText(movie_genre);
+            binding.lblGenreMovieDetails.setText(movie_genre);
 
             if (movies.getTagline().isEmpty()) {
-                binding.lblTaglineMoviedetails.setText("-");
+                binding.lblTaglineMovieDetails.setText("-");
             } else {
-                binding.lblTaglineMoviedetails.setText(movies.getTagline());
+                binding.lblTaglineMovieDetails.setText(movies.getTagline());
             }
 
-            binding.lblOverviewMoviedetails.setText(movies.getOverview());
+            binding.lblOverviewMovieDetails.setText(movies.getOverview());
 
-            binding.btnHomepageMoviedetails.setOnClickListener(new View.OnClickListener() {
+            binding.btnHomepageMovieDetails.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(movies.getHomepage())));

@@ -36,4 +36,9 @@
     <string name="video_false">Video: No</string>
     <string name="adult_true">Adult: Yes</string>
     <string name="adult_false">Adult: No</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="up_coming">Up Coming</string>
+    <string name="movie_details">Movie Details</string>
 </resources>

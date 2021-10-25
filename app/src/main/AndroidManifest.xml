@@ -16,10 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieDB">
         <activity
-            android:name=".view.MovieDetailsActivity"
-            android:exported="false" />
+            android:name=".view.activities.NowPlayingActivity"
+            android:exported="true" />
         <activity
-            android:name=".view.NowPlayingActivity"
+            android:name=".view.activities.MovieDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activities.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.MainMenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.MainActivity"
-            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,4 +1,4 @@
-package com.cahyaa.moviedb.view;
+package com.cahyaa.moviedb.view.activities;
 
 import android.os.Bundle;
 import android.view.View;
