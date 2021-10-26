@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -76,7 +77,8 @@ public class NowPlayingFragment extends Fragment {
             ItemClickSupport.addTo(binding.rvNowPlayingFragment).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
-                    return false;
+                    Toast.makeText(getActivity(), "Now Playing", Toast.LENGTH_SHORT).show();
+                    return true;
                 }
             });
 

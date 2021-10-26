@@ -5,16 +5,375 @@
     android:id="@+id/cons_movie_details_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.MovieDetailsFragment">
+    tools:context=".view.activities.MovieDetailsActivity">
 
-    <TextView
-        android:id="@+id/lbl_id_movie_details_fragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/hello_blank_fragment"
+    <ScrollView
+        android:id="@+id/scrollView_movie_details_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_scrollView_movie_details_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/back"
+                app:title="@string/txt_movie_details"
+                app:titleTextAppearance="@style/MovieDBTextView.Button"
+                app:titleTextColor="@color/colorTextSecondary" />
+
+            <ImageView
+                android:id="@+id/img_backdrop_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:foreground="@drawable/gradient_foreground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_movie_details_fragment"
+                app:layout_constraintDimensionRatio="16:9"
+                app:srcCompat="@drawable/poster_backdrop" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout_popularity_rating_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/img_backdrop_movie_details_fragment"
+                app:layout_constraintEnd_toEndOf="@+id/img_backdrop_movie_details_fragment"
+                app:layout_constraintStart_toStartOf="@+id/img_backdrop_movie_details_fragment">
+
+                <TextView
+                    android:id="@+id/lbl_rating_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="24dp"
+                    android:text="@string/lbl_rating"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/rating"
+                    app:drawableTint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lbl_vote_count_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:text="@string/lbl_vote_count"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/vote_count"
+                    app:drawableTint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lbl_popularity_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="0dp"
+                    android:text="@string/lbl_popularity"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp"
+                    app:drawableStartCompat="@drawable/popularity"
+                    app:drawableTint="@color/colorPrimary" />
+
+            </LinearLayout>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_poster_movie_details_fragment"
+                android:layout_width="120dp"
+                android:layout_height="170dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_backdrop_movie_details_fragment"
+                app:shapeAppearanceOverlay="@style/MovieDBImageView"
+                app:srcCompat="@drawable/poster_backdrop" />
+
+            <TextView
+                android:id="@+id/lbl_title_movie_details_fragment"
+                style="@style/MovieDBTextView.Header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/lbl_title"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_poster_movie_details_fragment"
+                app:layout_constraintTop_toTopOf="@+id/img_poster_movie_details_fragment" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout_id_runtime_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_title_movie_details_fragment"
+                app:layout_constraintStart_toStartOf="@+id/lbl_title_movie_details_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_title_movie_details_fragment">
+
+                <TextView
+                    android:id="@+id/lbl_runtime_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/lbl_runtime"
+                    android:textColor="@color/colorTextPrimary"
+                    app:drawableStartCompat="@drawable/runtime"
+                    app:drawableTint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lbl_id_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/movie_id"
+                    android:textColor="@color/colorTextPrimary"
+                    app:drawableStartCompat="@drawable/id"
+                    app:drawableTint="@color/colorPrimary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_video_adult_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_id_runtime_movie_details_fragment"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_id_runtime_movie_details_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_id_runtime_movie_details_fragment">
+
+                <TextView
+                    android:id="@+id/lbl_video_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/lbl_video"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/lbl_adult_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:text="@string/lbl_adult"
+                    android:textColor="@color/colorTextPrimary" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider1_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="2.5dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="?android:attr/listDivider"
+                android:backgroundTint="@color/colorPrimary"
+                android:backgroundTintMode="add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_poster_movie_details_fragment" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout_language_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider1_movie_details_fragment">
+
+                <TextView
+                    android:id="@+id/txt_language_movie_details_fragment"
+                    style="@style/MovieDBTextView.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_language"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/lbl_language_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_language" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_genre_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_language_movie_details_fragment"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_language_movie_details_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_language_movie_details_fragment">
+
+                <TextView
+                    android:id="@+id/txt_genre_movie_details_fragment"
+                    style="@style/MovieDBTextView.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_genre"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lbl_genre_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_genre" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_tagline_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_genre_movie_details_fragment"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_genre_movie_details_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_genre_movie_details_fragment">
+
+                <TextView
+                    android:id="@+id/txt_tagline_movie_details_fragment"
+                    style="@style/MovieDBTextView.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_tagline"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/lbl_tagline_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_tagline" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_overview_movie_details_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout_tagline_movie_details_fragment"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout_tagline_movie_details_fragment"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_tagline_movie_details_fragment">
+
+                <TextView
+                    android:id="@+id/txt_overview_movie_details_fragment"
+                    style="@style/MovieDBTextView.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_overview"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/lbl_overview_movie_details_fragment"
+                    style="@style/MovieDBTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_overview" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_credits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_overview_movie_details_fragment"
+                tools:listitem="@layout/card_cast_movie_details" />
+
+            <Button
+                android:id="@+id/btn_homepage_movie_details_fragment"
+                style="@style/MovieDBTextView.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/button"
+                android:includeFontPadding="true"
+                android:letterSpacing="0.05"
+                android:text="@string/btn_homepage"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_credits" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
