@@ -1,21 +1,31 @@
 package com.cahyaa.moviedb.view.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.cahyaa.moviedb.databinding.FragmentMovieDetailsBinding;
+import com.bumptech.glide.Glide;
+import com.cahyaa.moviedb.R;
+import com.cahyaa.moviedb.adapter.CreditsAdapter;
+import com.cahyaa.moviedb.helper.Const;
+import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.viewmodel.MovieViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MovieDetailsFragment extends Fragment {
-
-private FragmentMovieDetailsBinding binding;
 
     private MovieViewModel view_model;
 
@@ -50,109 +60,126 @@ private FragmentMovieDetailsBinding binding;
         }
     }
 
-//    private TextView lbl_movie_id;
+    private TextView lbl_rating, lbl_vote_count, lbl_popularity, lbl_title, lbl_runtime, lbl_id, lbl_language, lbl_genre, lbl_tagline, lbl_overview;
+    private ImageView img_backdrop, img_poster, img_production_companies;
+    private Button btn_homepage_movie_details_fragment;
+    private RecyclerView rv_credits;
+    private LinearLayout linearLayout_production_companies;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentMovieDetailsBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        View view = inflater.inflate(R.layout.fragment_movie_details, container, false);
+
+        img_backdrop = view.findViewById(R.id.img_backdrop_movie_details_fragment);
+        lbl_rating = view.findViewById(R.id.lbl_rating_movie_details_fragment);
+        lbl_vote_count = view.findViewById(R.id.lbl_vote_count_fragment);
+        lbl_popularity = view.findViewById(R.id.lbl_popularity_movie_details_fragment);
+        img_poster = view.findViewById(R.id.img_poster_movie_details_fragment);
+        lbl_title = view.findViewById(R.id.lbl_title_movie_details_fragment);
+        lbl_runtime = view.findViewById(R.id.lbl_runtime_movie_details_fragment);
+        lbl_id = view.findViewById(R.id.lbl_id_movie_details_fragment);
+        lbl_language = view.findViewById(R.id.lbl_language_movie_details_fragment);
+        lbl_genre = view.findViewById(R.id.lbl_genre_movie_details_fragment);
+        lbl_tagline = view.findViewById(R.id.lbl_tagline_movie_details_fragment);
+        lbl_overview = view.findViewById(R.id.lbl_overview_movie_details_fragment);
+        rv_credits = view.findViewById(R.id.rv_credits);
+        btn_homepage_movie_details_fragment = view.findViewById(R.id.btn_homepage_movie_details_fragment);
+        linearLayout_production_companies = view.findViewById(R.id.linearLayout_production_companies_movie_details_fragment);
+
+        movie_id = getArguments().getString("movieId");
 
         view_model = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
         view_model.getMovieById(movie_id);
         view_model.getResultGetMovieById().observe(getActivity(), showResultMovie);
-//        view_model.getCredits(movie_id);
-//        view_model.getResultGetCredits().observe(getActivity(), showResultCredits);
+        view_model.getCredits(movie_id);
+        view_model.getResultGetCredits().observe(getActivity(), showResultCredits);
 
         return view;
-
-//        setSupportActionBar(binding.toolbarMovieDetailsFragment);
-//        binding.toolbarMovieDetailsFragment.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
     }
 
     private final Observer<Movies> showResultMovie = new Observer<Movies>() {
         @Override
         public void onChanged(Movies movies) {
-//            binding.toolbarMovieDetailsFragment.setTitle(movies.getTitle());
+            String backdrop_path = Const.IMG_URL + movies.getBackdrop_path().toString();
+            Glide.with(getActivity()).load(backdrop_path).into(img_backdrop);
 
-//            String backdrop_path = Const.IMG_URL + movies.getBackdrop_path().toString();
-//            Glide.with(getActivity()).load(backdrop_path).into(binding.imgBackdropMovieDetailsFragment);
-//
-//            binding.lblRatingMovieDetailsFragment.setText(movies.getVote_average() + "/10");
-//            binding.lblVoteCountFragment.setText(String.valueOf(movies.getVote_count()));
-//            binding.lblPopularityMovieDetailsFragment.setText(String.valueOf(movies.getPopularity()));
-//
-//            String poster_path = Const.IMG_URL + movies.getPoster_path().toString();
-//            Glide.with(getActivity()).load(poster_path).into(binding.imgPosterMovieDetailsFragment);
-//
-//            binding.lblTitleMovieDetailsFragment.setText(movies.getTitle());
-//            binding.lblRuntimeMovieDetailsFragment.setText(String.valueOf(movies.getRuntime() + "'"));
-//            binding.lblIdMovieDetailsFragment.setText(movie_id);
-//
-//            if (movies.isVideo()) {
-//                binding.lblVideoMovieDetailsFragment.setText(R.string.video_true);
-//            } else {
-//                binding.lblVideoMovieDetailsFragment.setText(R.string.video_false);
-//            }
-//
-//            if (movies.isAdult()) {
-//                binding.lblAdultMovieDetailsFragment.setText(R.string.adult_true);
-//            } else {
-//                binding.lblAdultMovieDetailsFragment.setText(R.string.adult_false);
-//            }
-//
-//            for (int i = 0; i < movies.getSpoken_languages().size(); i++) {
-//                if (i == movies.getSpoken_languages().size() - 1) {
-//                    spoken_language += movies.getSpoken_languages().get(i).getName();
-//                } else {
-//                    spoken_language += movies.getSpoken_languages().get(i).getName() + ", ";
-//                }
-//            }
-//            binding.lblLanguageMovieDetailsFragment.setText(spoken_language);
-//
-//            for (int i = 0; i < movies.getGenres().size(); i++) {
-//                if (i == movies.getGenres().size() - 1) {
-//                    movie_genre += movies.getGenres().get(i).getName();
-//                } else {
-//                    movie_genre += movies.getGenres().get(i).getName() + " | ";
-//                }
-//            }
-//            binding.lblGenreMovieDetailsFragment.setText(movie_genre);
-//
-//            if (movies.getTagline().isEmpty()) {
-//                binding.txtTaglineMovieDetailsFragment.setText("-");
-//            } else {
-//                binding.lblTaglineMovieDetailsFragment.setText(movies.getTagline());
-//            }
-//
-//            binding.lblOverviewMovieDetailsFragment.setText(movies.getOverview());
-//
-//            binding.btnHomepageMovieDetailsFragment.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(movies.getHomepage())));
-//                }
-//            });
+            lbl_rating.setText(movies.getVote_average() + "/10");
+            lbl_vote_count.setText(String.valueOf(movies.getVote_count()));
+            lbl_popularity.setText(String.valueOf(movies.getPopularity()));
+
+            String poster_path = Const.IMG_URL + movies.getPoster_path().toString();
+            Glide.with(getActivity()).load(poster_path).into(img_poster);
+
+            lbl_title.setText(movies.getTitle());
+            lbl_runtime.setText(String.valueOf(movies.getRuntime() + "'"));
+            lbl_id.setText(movie_id);
+
+            for (int i = 0; i < movies.getSpoken_languages().size(); i++) {
+                if (i == movies.getSpoken_languages().size() - 1) {
+                    spoken_language += movies.getSpoken_languages().get(i).getName();
+                } else {
+                    spoken_language += movies.getSpoken_languages().get(i).getName() + ", ";
+                }
+            }
+            lbl_language.setText(spoken_language);
+
+            for (int i = 0; i < movies.getGenres().size(); i++) {
+                if (i == movies.getGenres().size() - 1) {
+                    movie_genre += movies.getGenres().get(i).getName();
+                } else {
+                    movie_genre += movies.getGenres().get(i).getName() + " | ";
+                }
+            }
+            lbl_genre.setText(movie_genre);
+
+            if (movies.getTagline().isEmpty()) {
+                lbl_tagline.setText("-");
+            } else {
+                lbl_tagline.setText(movies.getTagline());
+            }
+
+            lbl_overview.setText(movies.getOverview());
+
+            btn_homepage_movie_details_fragment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(movies.getHomepage())));
+                }
+            });
+
+            for (int i = 0; i < movies.getProduction_companies().size(); i++) {
+                ImageView img_production_companies = new ImageView(linearLayout_production_companies.getContext());
+                String production_companies_logo = Const.IMG_URL + movies.getProduction_companies().get(i).getLogo_path();
+                String production_companies_name = movies.getProduction_companies().get(i).getName();
+                if (movies.getProduction_companies().get(i).getLogo_path() == null) {
+                    img_production_companies.setImageDrawable(getResources().getDrawable(R.drawable.production_companies, getActivity().getTheme()));
+                } else if (production_companies_logo != "https://image.tmdb.org/3/t/p/w500/null") {
+                    Glide.with(getActivity()).load(production_companies_logo).into(img_production_companies);
+                }
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(250, 250);
+                lp.setMargins(20, 0, 20, 0);
+                img_production_companies.setLayoutParams(lp);
+                linearLayout_production_companies.addView(img_production_companies);
+                img_production_companies.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar snackbar = Snackbar.make(view, production_companies_name, Snackbar.LENGTH_SHORT);
+                        snackbar.setAnchorView(R.id.bottom_nav_main_menu);
+                        snackbar.show();
+                    }
+                });
+            }
         }
     };
 
-//    private Observer<Credits> showResultCredits = new Observer<Credits>() {
-//        @Override
-//        public void onChanged(Credits credits) {
-//            CreditsAdapter adapter = new CreditsAdapter(getActivity());
-//            adapter.setListNowPlaying(credits.getCast());
-//            binding.rvCredits.setAdapter(adapter);
-//        }
-//    };
+    private Observer<Credits> showResultCredits = new Observer<Credits>() {
+        @Override
+        public void onChanged(Credits credits) {
+            CreditsAdapter adapter = new CreditsAdapter(getActivity());
+            adapter.setListNowPlaying(credits.getCast());
+            rv_credits.setAdapter(adapter);
+        }
+    };
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 }

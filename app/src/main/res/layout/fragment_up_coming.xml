@@ -7,14 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".view.fragments.UpComingFragment">
 
-    <TextView
-        android:id="@+id/textView3"
-        style="@style/MovieDBTextView.Header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/up_coming"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_up_coming_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/card_now_playing" />
 </androidx.constraintlayout.widget.ConstraintLayout>

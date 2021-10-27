@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
-import com.cahyaa.moviedb.R;
 import com.cahyaa.moviedb.adapter.CreditsAdapter;
 import com.cahyaa.moviedb.databinding.ActivityMovieDetailsBinding;
 import com.cahyaa.moviedb.helper.Const;
@@ -71,18 +70,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
             binding.lblTitleMovieDetails.setText(movies.getTitle());
             binding.lblRuntimeMovieDetails.setText(String.valueOf(movies.getRuntime() + "'"));
             binding.lblIdMovieDetails.setText(movie_id);
-
-            if (movies.isVideo()) {
-                binding.lblVideoMovieDetails.setText(R.string.video_true);
-            } else {
-                binding.lblVideoMovieDetails.setText(R.string.video_false);
-            }
-
-            if (movies.isAdult()) {
-                binding.lblAdultMovieDetails.setText(R.string.adult_true);
-            } else {
-                binding.lblAdultMovieDetails.setText(R.string.adult_false);
-            }
 
             for (int i = 0; i < movies.getSpoken_languages().size(); i++) {
                 if (i == movies.getSpoken_languages().size() - 1) {

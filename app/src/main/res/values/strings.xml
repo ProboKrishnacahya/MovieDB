@@ -29,15 +29,11 @@
     <string name="lbl_tagline">%sTagline</string>
     <string name="lbl_character_name">Character Name</string>
     <string name="lbl_cast_name">Cast Name</string>
-    <string name="btn_homepage">Homepage</string>
+    <string name="txt_production_companies">Production Companies</string>
+    <string name="btn_homepage">Visit Homepage</string>
     <string name="img_backdrop">Backdrop Path</string>
     <string name="img_cast">Profile Path</string>
-    <string name="video_true">Video: Yes</string>
-    <string name="video_false">Video: No</string>
-    <string name="adult_true">Adult: Yes</string>
-    <string name="adult_false">Adult: No</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="now_playing">Now Playing</string>
     <string name="up_coming">Up Coming</string>
     <string name="movie_details">Movie Details</string>
