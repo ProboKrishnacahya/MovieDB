@@ -32,4 +32,9 @@ public class MainMenuActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navHostFragment.getNavController(), appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavMainMenu, navHostFragment.getNavController());
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        return navHostFragment.getNavController().navigateUp() || super.onSupportNavigateUp();
+    }
 }

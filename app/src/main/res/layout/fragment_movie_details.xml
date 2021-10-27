@@ -24,30 +24,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_movie_details_fragment"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:navigationIcon="@drawable/back"
-                app:title="@string/txt_movie_details"
-                app:titleTextAppearance="@style/MovieDBTextView.Button"
-                app:titleTextColor="@color/colorTextSecondary" />
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/toolbar_movie_details_fragment"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="?attr/colorPrimary"-->
+<!--                android:minHeight="?attr/actionBarSize"-->
+<!--                android:theme="?attr/actionBarTheme"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:navigationIcon="@drawable/back"-->
+<!--                app:title="@string/txt_movie_details"-->
+<!--                app:titleTextAppearance="@style/MovieDBTextView.Button"-->
+<!--                app:titleTextColor="@color/colorTextSecondary" />-->
 
             <ImageView
                 android:id="@+id/img_backdrop_movie_details_fragment"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:foreground="@drawable/gradient_foreground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar_movie_details_fragment"
                 app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/poster_backdrop" />
 
             <LinearLayout
