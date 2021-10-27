@@ -6,6 +6,7 @@ import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.model.NowPlaying;
+import com.cahyaa.moviedb.model.UpComing;
 import com.cahyaa.moviedb.retrofit.ApiService;
 
 import retrofit2.Call;
@@ -55,6 +56,24 @@ public class MovieRepository {
 
             @Override
             public void onFailure(Call<NowPlaying> call, Throwable t) {
+
+            }
+        });
+
+        return result;
+    }
+
+    public MutableLiveData<UpComing> getUpComingData() {
+        final MutableLiveData<UpComing> result = new MutableLiveData<>();
+
+        ApiService.endPoint().getUpComing(Const.API_KEY).enqueue(new Callback<UpComing>() {
+            @Override
+            public void onResponse(Call<UpComing> call, Response<UpComing> response) {
+                result.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<UpComing> call, Throwable t) {
 
             }
         });

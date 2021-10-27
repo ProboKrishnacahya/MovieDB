@@ -60,7 +60,7 @@ public class MovieDetailsFragment extends Fragment {
         }
     }
 
-    private TextView lbl_rating, lbl_vote_count, lbl_popularity, lbl_title, lbl_runtime, lbl_id, lbl_language, lbl_genre, lbl_tagline, lbl_overview;
+    private TextView lbl_rating, lbl_vote_count, lbl_popularity, lbl_title, lbl_release_date, lbl_runtime, lbl_id, lbl_language, lbl_genre, lbl_tagline, lbl_overview;
     private ImageView img_backdrop, img_poster, img_production_companies;
     private Button btn_homepage_movie_details_fragment;
     private RecyclerView rv_credits;
@@ -77,6 +77,7 @@ public class MovieDetailsFragment extends Fragment {
         lbl_popularity = view.findViewById(R.id.lbl_popularity_movie_details_fragment);
         img_poster = view.findViewById(R.id.img_poster_movie_details_fragment);
         lbl_title = view.findViewById(R.id.lbl_title_movie_details_fragment);
+        lbl_release_date = view.findViewById(R.id.lbl_release_date_movie_details_fragment);
         lbl_runtime = view.findViewById(R.id.lbl_runtime_movie_details_fragment);
         lbl_id = view.findViewById(R.id.lbl_id_movie_details_fragment);
         lbl_language = view.findViewById(R.id.lbl_language_movie_details_fragment);
@@ -112,6 +113,7 @@ public class MovieDetailsFragment extends Fragment {
             Glide.with(getActivity()).load(poster_path).into(img_poster);
 
             lbl_title.setText(movies.getTitle());
+            lbl_release_date.setText(movies.getRelease_date());
             lbl_runtime.setText(String.valueOf(movies.getRuntime() + "'"));
             lbl_id.setText(movie_id);
 

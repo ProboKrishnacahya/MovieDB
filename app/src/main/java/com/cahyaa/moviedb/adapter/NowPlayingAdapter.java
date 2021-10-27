@@ -68,7 +68,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         return getListNowPlaying().size();
     }
 
-    public class CardViewViewHolder extends RecyclerView.ViewHolder {
+    public static class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView img_poster;
         TextView lbl_title, lbl_overview, lbl_release_date;
         CardView cv;
