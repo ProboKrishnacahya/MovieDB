@@ -159,9 +159,9 @@ public class MovieDetailsFragment extends Fragment {
                 } else if (production_companies_logo != "https://image.tmdb.org/3/t/p/w500/null") {
                     Glide.with(getActivity()).load(production_companies_logo).into(img_production_companies);
                 }
-                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(250, 250);
-                lp.setMargins(20, 0, 20, 0);
-                img_production_companies.setLayoutParams(lp);
+//                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(300, 300);
+//                lp.setMargins(0, 0, 16, 0);
+//                img_production_companies.setLayoutParams(lp);
                 linearLayout_production_companies.addView(img_production_companies);
                 img_production_companies.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -82,4 +82,9 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
             cv = itemView.findViewById(R.id.cv_card_nowplaying);
         }
     }
+
+    public void updateList(List<NowPlaying.Results> newList) {
+        this.listNowPlaying = newList;
+        notifyDataSetChanged();
+    }
 }

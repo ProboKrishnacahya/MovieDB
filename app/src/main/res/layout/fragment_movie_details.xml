@@ -333,24 +333,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rv_credits" />
 
-            <HorizontalScrollView
-                android:id="@+id/horizontalScrollView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_production_companies_movie_details_fragment">
-
-                <LinearLayout
-                    android:id="@+id/linearLayout_production_companies_movie_details_fragment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" />
-            </HorizontalScrollView>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_credits"
                 android:layout_width="0dp"
@@ -365,13 +347,32 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout_overview_movie_details_fragment"
                 tools:listitem="@layout/card_cast_movie_details" />
 
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_production_companies_movie_details_fragment">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_production_companies_movie_details_fragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
             <Button
                 android:id="@+id/btn_homepage_movie_details_fragment"
                 style="@style/MovieDBTextView.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/button"
@@ -383,7 +384,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/horizontalScrollView" />
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
