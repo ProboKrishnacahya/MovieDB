@@ -55,6 +55,7 @@ public class NowPlayingFragment extends Fragment {
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to the bottom of the list
+                adapter.setLoading(true);
                 loadNextDataFromApi(page);
             }
         };
@@ -76,6 +77,7 @@ public class NowPlayingFragment extends Fragment {
     private Observer<NowPlaying> showNowPlaying = new Observer<NowPlaying>() {
         @Override
         public void onChanged(NowPlaying nowPlaying) {
+            adapter.setLoading(false);
             adapter.updateList(nowPlaying.getResults());
 
             ItemClickSupport.addTo(binding.rvNowPlayingFragment).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
@@ -99,6 +101,7 @@ public class NowPlayingFragment extends Fragment {
 
     public void loadNextDataFromApi(int offset) {
         view_model.getNowPlaying(offset);
+        view_model.getResultGetNowPlaying().observe(getActivity(), showNowPlaying);
     }
 
     @Override

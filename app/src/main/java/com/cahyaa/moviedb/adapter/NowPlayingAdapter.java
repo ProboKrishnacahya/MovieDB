@@ -18,7 +18,9 @@ import com.cahyaa.moviedb.model.NowPlaying;
 
 import java.util.List;
 
-public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.CardViewViewHolder> {
+public class NowPlayingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private boolean isLoading;
 
     private Context context;
     private List<NowPlaying.Results> listNowPlaying;
@@ -37,18 +39,37 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
 
     @NonNull
     @Override
-    public NowPlayingAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_now_playing, parent, false);
-        return new NowPlayingAdapter.CardViewViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+        RecyclerView.ViewHolder viewHolder;
+        if (isLoading) {
+            viewHolder = new LoadingViewHolder(view);
+        } else {
+            viewHolder = new NowPlayingAdapter.CardViewViewHolder(view);
+        }
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NowPlayingAdapter.CardViewViewHolder holder, int position) {
+    public int getItemViewType(int position) {
+        int view;
+        if (isLoading) {
+            view = R.layout.layout_shimmer_effect;
+        } else {
+            view = R.layout.card_now_playing;
+        }
+        return view;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final NowPlaying.Results results = getListNowPlaying().get(position);
-        holder.lbl_title.setText(results.getTitle());
-        holder.lbl_overview.setText(results.getOverview());
-        holder.lbl_release_date.setText(results.getRelease_date());
-        Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
+        if (holder instanceof CardViewViewHolder) {
+            ((CardViewViewHolder) holder).lbl_title.setText(results.getTitle());
+            ((CardViewViewHolder) holder).lbl_overview.setText(results.getOverview());
+            ((CardViewViewHolder) holder).lbl_release_date.setText(results.getRelease_date());
+            Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(((CardViewViewHolder) holder).img_poster);
+        }
 //        holder.cv.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -83,8 +104,22 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         }
     }
 
-    public void updateList(List<NowPlaying.Results> newList) {
-        this.listNowPlaying = newList;
+    public static class LoadingViewHolder extends RecyclerView.ViewHolder {
+        public LoadingViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
+    }
+
+    public void setLoading(boolean isLoading) {
+        this.isLoading = isLoading;
         notifyDataSetChanged();
+    }
+
+    public void updateList(List<NowPlaying.Results> newList) {
+//        List<NowPlaying.Results> list = new ArrayList<>();
+//        list.addAll(listNowPlaying);
+        listNowPlaying.addAll(newList);
+        notifyDataSetChanged();
+//        notifyItemRangeInserted(listNowPlaying.size(), list.size());
     }
 }
