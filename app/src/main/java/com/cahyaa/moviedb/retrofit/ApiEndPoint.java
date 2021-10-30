@@ -25,8 +25,8 @@ public interface ApiEndPoint {
 
     @GET("movie/upcoming")
     Call<UpComing> getUpComing(
-            @Query("api_key") String apiKey
-//            @Query("page") int page
+            @Query("api_key") String apiKey,
+            @Query("page") int page
     );
 
     @GET("movie/{movie_id}/credits")

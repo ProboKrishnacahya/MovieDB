@@ -18,7 +18,9 @@ import com.cahyaa.moviedb.model.UpComing;
 
 import java.util.List;
 
-public class UpComingAdapter extends RecyclerView.Adapter<UpComingAdapter.CardViewViewHolder> {
+public class UpComingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private boolean isLoading;
 
     private Context context;
     private List<UpComing.Results> listUpComing;
@@ -37,18 +39,37 @@ public class UpComingAdapter extends RecyclerView.Adapter<UpComingAdapter.CardVi
 
     @NonNull
     @Override
-    public UpComingAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_up_coming, parent, false);
-        return new UpComingAdapter.CardViewViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+        RecyclerView.ViewHolder viewHolder;
+        if (isLoading) {
+            viewHolder = new LoadingViewHolder(view);
+        } else {
+            viewHolder = new UpComingAdapter.CardViewViewHolder(view);
+        }
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UpComingAdapter.CardViewViewHolder holder, int position) {
+    public int getItemViewType(int position) {
+        int view;
+        if (isLoading) {
+            view = R.layout.layout_shimmer_effect;
+        } else {
+            view = R.layout.card_up_coming;
+        }
+        return view;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final UpComing.Results results = getListUpComing().get(position);
-        holder.lbl_title.setText(results.getTitle());
-        holder.lbl_overview.setText(results.getOverview());
-        holder.lbl_release_date.setText(results.getRelease_date());
-        Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
+        if (holder instanceof CardViewViewHolder) {
+            ((CardViewViewHolder) holder).lbl_title.setText(results.getTitle());
+            ((CardViewViewHolder) holder).lbl_overview.setText(results.getOverview());
+            ((CardViewViewHolder) holder).lbl_release_date.setText(results.getRelease_date());
+            Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(((CardViewViewHolder) holder).img_poster);
+        }
     }
 
     @Override
@@ -69,5 +90,21 @@ public class UpComingAdapter extends RecyclerView.Adapter<UpComingAdapter.CardVi
             lbl_release_date = itemView.findViewById(R.id.lbl_releasedate_card_upcoming);
             cv = itemView.findViewById(R.id.cv_card_upcoming);
         }
+    }
+
+    public static class LoadingViewHolder extends RecyclerView.ViewHolder {
+        public LoadingViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
+    }
+
+    public void setLoading(boolean isLoading) {
+        this.isLoading = isLoading;
+        notifyDataSetChanged();
+    }
+
+    public void updateList(List<UpComing.Results> newList) {
+        listUpComing.addAll(newList);
+        notifyDataSetChanged();
     }
 }

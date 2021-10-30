@@ -13,5 +13,9 @@
         <item name="fontFamily">@font/rubik_medium</item>
         <item name="android:textSize">20sp</item>
     </style>
+    <style name="MovieDBTextView.Chip">
+        <item name="fontFamily">@font/rubik</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 
 </resources>

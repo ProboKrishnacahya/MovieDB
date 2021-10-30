@@ -3,7 +3,11 @@ package com.cahyaa.moviedb.view;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -17,6 +21,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     NavHostFragment navHostFragment;
 
+    boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +33,44 @@ public class MainMenuActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbarMainMenu);
 
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_fragment_main_menu);
-
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.nowPlayingFragment, R.id.upComingFragment).build();
         NavigationUI.setupActionBarWithNavController(this, navHostFragment.getNavController(), appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavMainMenu, navHostFragment.getNavController());
+
+        navHostFragment.getNavController().addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                if (destination.getId() == R.id.nowPlayingFragment || destination.getId() == R.id.upComingFragment || destination.getId() == R.id.movieDetailsFragment) {
+                    binding.toolbarMainMenu.setVisibility(View.VISIBLE);
+                    binding.bottomNavMainMenu.setVisibility(View.VISIBLE);
+                } else {
+                    binding.toolbarMainMenu.setVisibility(View.GONE);
+                    binding.bottomNavMainMenu.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         return navHostFragment.getNavController().navigateUp() || super.onSupportNavigateUp();
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        if (doubleBackToExitPressedOnce) {
+//            super.onBackPressed();
+//            return;
+//        }
+//
+//        this.doubleBackToExitPressedOnce = true;
+//        Toast.makeText(this, "Click again to exit", Toast.LENGTH_SHORT).show();
+//
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                doubleBackToExitPressedOnce = false;
+//            }
+//        }, 2000);
+//    }
 }

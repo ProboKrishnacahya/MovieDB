@@ -49,8 +49,8 @@ public class MovieViewModel extends AndroidViewModel {
     //*Begin of ViewModel getUpComing
     private MutableLiveData<UpComing> resultGetUpComing = new MutableLiveData<>();
 
-    public void getUpComing() {
-        resultGetUpComing = repository.getUpComingData();
+    public void getUpComing(int page) {
+        resultGetUpComing = repository.getUpComingData(page);
     }
 
     public LiveData<UpComing> getResultGetUpComing() {

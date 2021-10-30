@@ -1,5 +1,6 @@
 package com.cahyaa.moviedb.view.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -23,7 +25,8 @@ import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.viewmodel.MovieViewModel;
-import com.google.android.material.snackbar.Snackbar;
+
+import java.util.Objects;
 
 public class MovieDetailsFragment extends Fragment {
 
@@ -100,6 +103,7 @@ public class MovieDetailsFragment extends Fragment {
     }
 
     private final Observer<Movies> showResultMovie = new Observer<Movies>() {
+        @SuppressLint("UseCompatLoadingForDrawables")
         @Override
         public void onChanged(Movies movies) {
             String backdrop_path = Const.IMG_URL + movies.getBackdrop_path().toString();
@@ -141,7 +145,11 @@ public class MovieDetailsFragment extends Fragment {
                 lbl_tagline.setText(movies.getTagline());
             }
 
-            lbl_overview.setText(movies.getOverview());
+            if (movies.getOverview().isEmpty()) {
+                lbl_overview.setText("-");
+            } else {
+                lbl_overview.setText(movies.getOverview());
+            }
 
             btn_homepage_movie_details_fragment.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -156,19 +164,19 @@ public class MovieDetailsFragment extends Fragment {
                 String production_companies_name = movies.getProduction_companies().get(i).getName();
                 if (movies.getProduction_companies().get(i).getLogo_path() == null) {
                     img_production_companies.setImageDrawable(getResources().getDrawable(R.drawable.production_companies, getActivity().getTheme()));
-                } else if (production_companies_logo != "https://image.tmdb.org/3/t/p/w500/null") {
+                } else if (!Objects.equals(production_companies_logo, "https://image.tmdb.org/3/t/p/w500/null")) {
                     Glide.with(getActivity()).load(production_companies_logo).into(img_production_companies);
                 }
-//                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(300, 300);
-//                lp.setMargins(0, 0, 16, 0);
-//                img_production_companies.setLayoutParams(lp);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(300, 300);
+                lp.setMargins(0, 0, 16, 0);
+                img_production_companies.setLayoutParams(lp);
                 linearLayout_production_companies.addView(img_production_companies);
                 img_production_companies.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Snackbar snackbar = Snackbar.make(view, production_companies_name, Snackbar.LENGTH_SHORT);
-                        snackbar.setAnchorView(R.id.bottom_nav_main_menu);
-                        snackbar.show();
+                        Toast toast = Toast.makeText(getContext(), production_companies_name, Toast.LENGTH_SHORT);
+                        toast.setText(production_companies_name);
+                        toast.show();
                     }
                 });
             }
