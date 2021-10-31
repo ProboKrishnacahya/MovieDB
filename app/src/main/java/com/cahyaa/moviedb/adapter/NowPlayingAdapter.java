@@ -25,7 +25,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private Context context;
     private List<NowPlaying.Results> listNowPlaying;
 
-    private List<NowPlaying.Results> getListNowPlaying() {
+    public List<NowPlaying.Results> getListNowPlaying() {
         return listNowPlaying;
     }
 

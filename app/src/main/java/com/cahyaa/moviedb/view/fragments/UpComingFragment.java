@@ -80,7 +80,7 @@ public class UpComingFragment extends Fragment {
             ItemClickSupport.addTo(binding.rvUpComingFragment).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
-                    Toast.makeText(getActivity(), "Upcoming", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Upcoming Movie", Toast.LENGTH_SHORT).show();
                     return true;
                 }
             });

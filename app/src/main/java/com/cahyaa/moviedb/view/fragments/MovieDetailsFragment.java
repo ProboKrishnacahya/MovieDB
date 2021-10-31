@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,7 +25,11 @@ import com.cahyaa.moviedb.adapter.CreditsAdapter;
 import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
+import com.cahyaa.moviedb.model.Videos;
 import com.cahyaa.moviedb.viewmodel.MovieViewModel;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.Objects;
 
@@ -36,38 +41,12 @@ public class MovieDetailsFragment extends Fragment {
     private String spoken_language = "";
     private String movie_genre = "";
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
-
-    public MovieDetailsFragment() {
-    }
-
-    public static MovieDetailsFragment newInstance(String param1, String param2) {
-        MovieDetailsFragment fragment = new MovieDetailsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     private TextView lbl_rating, lbl_vote_count, lbl_popularity, lbl_title, lbl_release_date, lbl_runtime, lbl_id, lbl_language, lbl_genre, lbl_tagline, lbl_overview;
     private ImageView img_backdrop, img_poster, img_production_companies;
     private Button btn_homepage_movie_details_fragment;
     private RecyclerView rv_credits;
     private LinearLayout linearLayout_production_companies;
+    private YouTubePlayerView youtube_player_view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,6 +69,7 @@ public class MovieDetailsFragment extends Fragment {
         rv_credits = view.findViewById(R.id.rv_credits);
         btn_homepage_movie_details_fragment = view.findViewById(R.id.btn_homepage_movie_details_fragment);
         linearLayout_production_companies = view.findViewById(R.id.linearLayout_production_companies_movie_details_fragment);
+        youtube_player_view = view.findViewById(R.id.youtube_player_view_movie_details_fragment);
 
         movie_id = getArguments().getString("movieId");
 
@@ -98,6 +78,8 @@ public class MovieDetailsFragment extends Fragment {
         view_model.getResultGetMovieById().observe(getActivity(), showResultMovie);
         view_model.getCredits(movie_id);
         view_model.getResultGetCredits().observe(getActivity(), showResultCredits);
+        view_model.getVideos(movie_id);
+        view_model.getResultGetVideos().observe(getActivity(), showResultVideos);
 
         return view;
     }
@@ -106,8 +88,12 @@ public class MovieDetailsFragment extends Fragment {
         @SuppressLint("UseCompatLoadingForDrawables")
         @Override
         public void onChanged(Movies movies) {
-            String backdrop_path = Const.IMG_URL + movies.getBackdrop_path().toString();
-            Glide.with(getActivity()).load(backdrop_path).into(img_backdrop);
+            if (movies.getBackdrop_path() != null) {
+                String backdrop_path = Const.IMG_URL + movies.getBackdrop_path();
+                Glide.with(getActivity()).load(backdrop_path).into(img_backdrop);
+            } else {
+                Glide.with(getActivity()).load(R.drawable.backdrop).into(img_backdrop);
+            }
 
             lbl_rating.setText(movies.getVote_average() + "/10");
             lbl_vote_count.setText(String.valueOf(movies.getVote_count()));
@@ -189,6 +175,21 @@ public class MovieDetailsFragment extends Fragment {
             CreditsAdapter adapter = new CreditsAdapter(getActivity());
             adapter.setListNowPlaying(credits.getCast());
             rv_credits.setAdapter(adapter);
+        }
+    };
+
+    private Observer<Videos> showResultVideos = new Observer<Videos>() {
+        @Override
+        public void onChanged(Videos videos) {
+            getLifecycle().addObserver(youtube_player_view);
+
+            youtube_player_view.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                @Override
+                public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                    String videoId = videos.getResults().get(0).getKey();
+                    youTubePlayer.loadVideo(videoId, 0);
+                }
+            });
         }
     };
 

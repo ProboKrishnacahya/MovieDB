@@ -366,6 +366,21 @@
                     android:orientation="horizontal" />
             </HorizontalScrollView>
 
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view_movie_details_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toTopOf="@id/btn_homepage_movie_details_fragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+                app:autoPlay="false"
+                app:showFullScreenButton="false" />
+
             <Button
                 android:id="@+id/btn_homepage_movie_details_fragment"
                 style="@style/MovieDBTextView.Button"

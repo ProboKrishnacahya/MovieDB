@@ -10,7 +10,9 @@ import androidx.lifecycle.MutableLiveData;
 import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.model.NowPlaying;
+import com.cahyaa.moviedb.model.Popular;
 import com.cahyaa.moviedb.model.UpComing;
+import com.cahyaa.moviedb.model.Videos;
 import com.cahyaa.moviedb.repositories.MovieRepository;
 
 public class MovieViewModel extends AndroidViewModel {
@@ -69,4 +71,28 @@ public class MovieViewModel extends AndroidViewModel {
         return resultGetCredits;
     }
     //End of ViewModel getCredits
+
+    //*Begin of ViewModel getPopular
+    private MutableLiveData<Popular> resultGetPopular = new MutableLiveData<>();
+
+    public void getPopular() {
+        resultGetPopular = repository.getPopularData();
+    }
+
+    public LiveData<Popular> getResultGetPopular() {
+        return resultGetPopular;
+    }
+    //End of ViewModel getPopular
+
+    //*Begin of ViewModel getVideos
+    private MutableLiveData<Videos> resultGetVideos = new MutableLiveData<>();
+
+    public void getVideos(String movieId) {
+        resultGetVideos = repository.getVideosData(movieId);
+    }
+
+    public LiveData<Videos> getResultGetVideos() {
+        return resultGetVideos;
+    }
+    //End of ViewModel getVideos
 }

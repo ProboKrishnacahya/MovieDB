@@ -72,6 +72,23 @@ public class NowPlayingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ItemClickSupport.addTo(binding.rvNowPlayingFragment).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
+                Toast.makeText(getActivity(), "Now Playing Movie", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        ItemClickSupport.addTo(binding.rvNowPlayingFragment).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("movieId", "" + adapter.getListNowPlaying().get(position).getId());
+                Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
+            }
+        });
     }
 
     private Observer<NowPlaying> showNowPlaying = new Observer<NowPlaying>() {
@@ -79,23 +96,6 @@ public class NowPlayingFragment extends Fragment {
         public void onChanged(NowPlaying nowPlaying) {
             adapter.setLoading(false);
             adapter.updateList(nowPlaying.getResults());
-
-            ItemClickSupport.addTo(binding.rvNowPlayingFragment).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
-                    Toast.makeText(getActivity(), "Now Playing", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            });
-
-            ItemClickSupport.addTo(binding.rvNowPlayingFragment).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-                @Override
-                public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("movieId", "" + nowPlaying.getResults().get(position).getId());
-                    Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
-                }
-            });
         }
     };
 

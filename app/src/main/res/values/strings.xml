@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">MovieDB</string>
 
+    <!--Fragments-->
+    <string name="now_playing">Now Playing</string>
+    <string name="up_coming">Up Coming</string>
+    <string name="popular">Popular</string>
+    <string name="movie_details">Movie Details</string>
+
     <!--MainActivity.java-->
     <string name="btn_hit">Hit API</string>
     <string name="movie_id">Movie ID</string>
@@ -34,9 +40,4 @@
     <string name="img_backdrop">Backdrop Path</string>
     <string name="img_cast">Profile Path</string>
 
-    <string name="now_playing">Now Playing</string>
-    <string name="up_coming">Up Coming</string>
-    <string name="movie_details">Movie Details</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

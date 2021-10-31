@@ -49,4 +49,13 @@
             android:defaultValue="-"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/popularFragment"
+        android:name="com.cahyaa.moviedb.view.fragments.PopularFragment"
+        android:label="fragment_popular"
+        tools:layout="@layout/fragment_popular" >
+        <action
+            android:id="@+id/action_popularFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
 </navigation>
