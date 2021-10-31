@@ -37,6 +37,18 @@ public class MovieViewModel extends AndroidViewModel {
     }
     //End of ViewModel getMovieById
 
+    //*Begin of ViewModel getMovieResult
+    private MutableLiveData<Search> resultGetMovieResult = new MutableLiveData<>();
+
+    public void getMovieResult(String query) {
+        resultGetMovieResult = repository.getSearchData(query);
+    }
+
+    public LiveData<Search> getResultGetMovieResult() {
+        return resultGetMovieResult;
+    }
+    //End of ViewModel getMovieResult
+
     //*Begin of ViewModel getNowPlaying
     private MutableLiveData<NowPlaying> resultGetNowPlaying = new MutableLiveData<>();
 
@@ -61,23 +73,11 @@ public class MovieViewModel extends AndroidViewModel {
     }
     //End of ViewModel getNowPlaying
 
-    //*Begin of ViewModel getCredits
-    private MutableLiveData<Credits> resultGetCredits = new MutableLiveData<>();
-
-    public void getCredits(String movieId) {
-        resultGetCredits = repository.getCreditsData(movieId);
-    }
-
-    public LiveData<Credits> getResultGetCredits() {
-        return resultGetCredits;
-    }
-    //End of ViewModel getCredits
-
     //*Begin of ViewModel getPopular
     private MutableLiveData<Popular> resultGetPopular = new MutableLiveData<>();
 
-    public void getPopular() {
-        resultGetPopular = repository.getPopularData();
+    public void getPopular(int page) {
+        resultGetPopular = repository.getPopularData(page);
     }
 
     public LiveData<Popular> getResultGetPopular() {
@@ -97,15 +97,15 @@ public class MovieViewModel extends AndroidViewModel {
     }
     //End of ViewModel getVideos
 
-    //*Begin of ViewModel getMovieResult
-    private MutableLiveData<Search> resultGetMovieResult = new MutableLiveData<>();
+    //*Begin of ViewModel getCredits
+    private MutableLiveData<Credits> resultGetCredits = new MutableLiveData<>();
 
-    public void getMovieResult(String query) {
-        resultGetMovieResult = repository.getSearchData(query);
+    public void getCredits(String movieId) {
+        resultGetCredits = repository.getCreditsData(movieId);
     }
 
-    public LiveData<Search> getResultGetMovieResult() {
-        return resultGetMovieResult;
+    public LiveData<Credits> getResultGetCredits() {
+        return resultGetCredits;
     }
-    //End of ViewModel getMovieResult
+    //End of ViewModel getCredits
 }

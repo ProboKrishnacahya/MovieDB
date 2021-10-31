@@ -21,7 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cahyaa.moviedb.R;
-import com.cahyaa.moviedb.adapter.CreditsAdapter;
+import com.cahyaa.moviedb.adapter.CastAdapter;
+import com.cahyaa.moviedb.adapter.CrewAdapter;
 import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
@@ -44,7 +45,7 @@ public class MovieDetailsFragment extends Fragment {
     private TextView lbl_rating, lbl_vote_count, lbl_popularity, lbl_title, lbl_release_date, lbl_runtime, lbl_id, lbl_language, lbl_genre, lbl_tagline, lbl_overview;
     private ImageView img_backdrop, img_poster;
     private YouTubePlayerView youtube_player_view;
-    private RecyclerView rv_credits;
+    private RecyclerView rv_cast, rv_crew;
     private LinearLayout linearLayout_production_companies;
     private Button btn_homepage_movie_details_fragment;
 
@@ -67,7 +68,8 @@ public class MovieDetailsFragment extends Fragment {
         lbl_genre = view.findViewById(R.id.lbl_genre_movie_details_fragment);
         lbl_tagline = view.findViewById(R.id.lbl_tagline_movie_details_fragment);
         lbl_overview = view.findViewById(R.id.lbl_overview_movie_details_fragment);
-        rv_credits = view.findViewById(R.id.rv_credits_fragment);
+        rv_cast = view.findViewById(R.id.rv_cast_fragment);
+        rv_crew = view.findViewById(R.id.rv_crew_fragment);
         linearLayout_production_companies = view.findViewById(R.id.linearLayout_production_companies_movie_details_fragment);
         btn_homepage_movie_details_fragment = view.findViewById(R.id.btn_homepage_movie_details_fragment);
 
@@ -176,9 +178,12 @@ public class MovieDetailsFragment extends Fragment {
     private Observer<Credits> showResultCredits = new Observer<Credits>() {
         @Override
         public void onChanged(Credits credits) {
-            CreditsAdapter adapter = new CreditsAdapter(getActivity());
-            adapter.setListNowPlaying(credits.getCast());
-            rv_credits.setAdapter(adapter);
+            CastAdapter castAdapter = new CastAdapter(getActivity());
+            CrewAdapter crewAdapter = new CrewAdapter(getActivity());
+            castAdapter.setListNowPlaying(credits.getCast());
+            crewAdapter.setListNowPlaying(credits.getCrew());
+            rv_cast.setAdapter(castAdapter);
+            rv_crew.setAdapter(crewAdapter);
         }
     };
 

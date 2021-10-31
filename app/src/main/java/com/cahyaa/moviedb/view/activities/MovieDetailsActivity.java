@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
-import com.cahyaa.moviedb.adapter.CreditsAdapter;
+import com.cahyaa.moviedb.adapter.CastAdapter;
 import com.cahyaa.moviedb.databinding.ActivityMovieDetailsBinding;
 import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.Credits;
@@ -109,7 +109,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private Observer<Credits> showResultCredits = new Observer<Credits>() {
         @Override
         public void onChanged(Credits credits) {
-            CreditsAdapter adapter = new CreditsAdapter(MovieDetailsActivity.this);
+            CastAdapter adapter = new CastAdapter(MovieDetailsActivity.this);
             adapter.setListNowPlaying(credits.getCast());
             binding.rvCredits.setAdapter(adapter);
         }

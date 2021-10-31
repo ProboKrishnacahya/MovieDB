@@ -48,6 +48,24 @@ public class MovieRepository {
         return result;
     }
 
+    public MutableLiveData<Search> getSearchData(String query) {
+        final MutableLiveData<Search> result = new MutableLiveData<>();
+
+        ApiService.endPoint().getMovieResult(Const.API_KEY, query).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                result.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+
+            }
+        });
+
+        return result;
+    }
+
     public MutableLiveData<NowPlaying> getNowPlayingData(int page) {
         final MutableLiveData<NowPlaying> result = new MutableLiveData<>();
 
@@ -84,28 +102,10 @@ public class MovieRepository {
         return result;
     }
 
-    public MutableLiveData<Credits> getCreditsData(String movieId) {
-        final MutableLiveData<Credits> result = new MutableLiveData<>();
-
-        ApiService.endPoint().getCredits(movieId, Const.API_KEY).enqueue(new Callback<Credits>() {
-            @Override
-            public void onResponse(Call<Credits> call, Response<Credits> response) {
-                result.setValue(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<Credits> call, Throwable t) {
-
-            }
-        });
-
-        return result;
-    }
-
-    public MutableLiveData<Popular> getPopularData() {
+    public MutableLiveData<Popular> getPopularData(int page) {
         final MutableLiveData<Popular> result = new MutableLiveData<>();
 
-        ApiService.endPoint().getPopular(Const.API_KEY).enqueue(new Callback<Popular>() {
+        ApiService.endPoint().getPopular(Const.API_KEY, page).enqueue(new Callback<Popular>() {
             @Override
             public void onResponse(Call<Popular> call, Response<Popular> response) {
                 result.setValue(response.body());
@@ -138,17 +138,17 @@ public class MovieRepository {
         return result;
     }
 
-    public MutableLiveData<Search> getSearchData(String query) {
-        final MutableLiveData<Search> result = new MutableLiveData<>();
+    public MutableLiveData<Credits> getCreditsData(String movieId) {
+        final MutableLiveData<Credits> result = new MutableLiveData<>();
 
-        ApiService.endPoint().getMovieResult(Const.API_KEY, query).enqueue(new Callback<Search>() {
+        ApiService.endPoint().getCredits(movieId, Const.API_KEY).enqueue(new Callback<Credits>() {
             @Override
-            public void onResponse(Call<Search> call, Response<Search> response) {
+            public void onResponse(Call<Credits> call, Response<Credits> response) {
                 result.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<Search> call, Throwable t) {
+            public void onFailure(Call<Credits> call, Throwable t) {
 
             }
         });

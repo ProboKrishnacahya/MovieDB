@@ -18,12 +18,14 @@ import com.cahyaa.moviedb.model.Popular;
 
 import java.util.List;
 
-public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.CardViewViewHolder> {
+public class PopularAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private boolean isLoading;
 
     private Context context;
     private List<Popular.Results> listPopular;
 
-    private List<Popular.Results> getListPopular() {
+    public List<Popular.Results> getListPopular() {
         return listPopular;
     }
 
@@ -37,20 +39,37 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.CardView
 
     @NonNull
     @Override
-    public CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_popular, parent, false);
-        return new PopularAdapter.CardViewViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+        RecyclerView.ViewHolder viewHolder;
+        if (isLoading) {
+            viewHolder = new LoadingViewHolder(view);
+        } else {
+            viewHolder = new PopularAdapter.CardViewViewHolder(view);
+        }
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
+    public int getItemViewType(int position) {
+        int view;
+        if (isLoading) {
+            view = R.layout.layout_shimmer_effect;
+        } else {
+            view = R.layout.card_popular;
+        }
+        return view;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final Popular.Results results = getListPopular().get(position);
-        holder.lbl_title.setText(results.getTitle());
-        holder.lbl_overview.setText(results.getOverview());
-        holder.lbl_release_date.setText(results.getRelease_date());
-        Glide.with(context)
-                .load(Const.IMG_URL + results.getPoster_path())
-                .into(holder.img_poster);
+        if (holder instanceof CardViewViewHolder) {
+            ((CardViewViewHolder) holder).lbl_title.setText(results.getTitle());
+            ((CardViewViewHolder) holder).lbl_overview.setText(results.getOverview());
+            ((CardViewViewHolder) holder).lbl_release_date.setText(results.getRelease_date());
+            Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(((CardViewViewHolder) holder).img_poster);
+        }
     }
 
     @Override
@@ -58,7 +77,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.CardView
         return getListPopular().size();
     }
 
-    public class CardViewViewHolder extends RecyclerView.ViewHolder {
+    public static class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView img_poster;
         TextView lbl_title, lbl_overview, lbl_release_date;
         CardView cv;
@@ -73,4 +92,19 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.CardView
         }
     }
 
+    public static class LoadingViewHolder extends RecyclerView.ViewHolder {
+        public LoadingViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
+    }
+
+    public void setLoading(boolean isLoading) {
+        this.isLoading = isLoading;
+        notifyDataSetChanged();
+    }
+
+    public void updateList(List<Popular.Results> newList) {
+        listPopular.addAll(newList);
+        notifyDataSetChanged();
+    }
 }

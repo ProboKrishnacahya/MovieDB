@@ -16,7 +16,7 @@ import com.cahyaa.moviedb.model.Credits;
 
 import java.util.List;
 
-public class CreditsAdapter extends RecyclerView.Adapter<CreditsAdapter.CardViewViewHolder> {
+public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CardViewViewHolder> {
 
     private Context context;
     private List<Credits.Cast> listCredits;
@@ -29,24 +29,24 @@ public class CreditsAdapter extends RecyclerView.Adapter<CreditsAdapter.CardView
         this.listCredits = listCredits;
     }
 
-    public CreditsAdapter(Context context) {
+    public CastAdapter(Context context) {
         this.context = context;
     }
 
     @NonNull
     @Override
-    public CreditsAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CastAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_cast_movie_details, parent, false);
-        return new CreditsAdapter.CardViewViewHolder(view);
+        return new CastAdapter.CardViewViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CreditsAdapter.CardViewViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CastAdapter.CardViewViewHolder holder, int position) {
         CardCastMovieDetailsBinding binding = CardCastMovieDetailsBinding.bind(holder.itemView);
         final Credits.Cast cast = getListCredits().get(position);
         Glide.with(context).load(Const.IMG_URL + cast.getProfile_path()).into(binding.imgCastMoviedetails);
-        binding.lblCharacterMoviedetails.setText(cast.getCharacter());
         binding.lblCastMoviedetails.setText(cast.getOriginal_name());
+        binding.lblCharacterMoviedetails.setText(cast.getCharacter());
     }
 
     @Override

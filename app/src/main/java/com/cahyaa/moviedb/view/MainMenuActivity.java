@@ -37,14 +37,14 @@ public class MainMenuActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbarMainMenu);
 
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_fragment_main_menu);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.nowPlayingFragment, R.id.upComingFragment).build();
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.nowPlayingFragment, R.id.upComingFragment, R.id.popularFragment).build();
         NavigationUI.setupActionBarWithNavController(this, navHostFragment.getNavController(), appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavMainMenu, navHostFragment.getNavController());
 
         navHostFragment.getNavController().addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                if (destination.getId() == R.id.nowPlayingFragment || destination.getId() == R.id.upComingFragment) {
+                if (destination.getId() == R.id.nowPlayingFragment || destination.getId() == R.id.upComingFragment || destination.getId() == R.id.popularFragment) {
                     binding.toolbarMainMenu.setVisibility(View.VISIBLE);
                     binding.bottomNavMainMenu.setVisibility(View.VISIBLE);
                     if (menuItem != null) {

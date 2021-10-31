@@ -16,19 +16,19 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/img_cast_moviedetails"
+            android:id="@+id/img_crew_moviedetails"
             android:layout_width="0dp"
             android:layout_height="150dp"
-            android:background="@drawable/cast"
-            android:contentDescription="@string/img_cast"
+            android:background="@drawable/crew"
+            android:contentDescription="@string/img_crew"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cast" />
+            app:srcCompat="@drawable/crew" />
 
         <TextView
-            android:id="@+id/lbl_cast_moviedetails"
+            android:id="@+id/lbl_crew_moviedetails"
             style="@style/MovieDBTextView.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,15 +37,15 @@
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="3"
-            android:text="@string/lbl_cast_name"
+            android:text="@string/lbl_crew_name"
             android:textColor="@color/colorTextPrimary"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_cast_moviedetails" />
+            app:layout_constraintTop_toBottomOf="@+id/img_crew_moviedetails" />
 
         <TextView
-            android:id="@+id/lbl_character_moviedetails"
+            android:id="@+id/lbl_role_moviedetails"
             style="@style/MovieDBTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -53,11 +53,11 @@
             android:layout_marginBottom="24dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="@string/lbl_character_name"
+            android:text="@string/lbl_role_name"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/lbl_cast_moviedetails"
-            app:layout_constraintStart_toStartOf="@+id/lbl_cast_moviedetails"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_cast_moviedetails" />
+            app:layout_constraintEnd_toEndOf="@+id/lbl_crew_moviedetails"
+            app:layout_constraintStart_toStartOf="@+id/lbl_crew_moviedetails"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_crew_moviedetails" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

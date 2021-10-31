@@ -1,7 +1,12 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MovieDB</string>
 
-    <!--Fragments-->
+    <!--ImageView android:contentDescription-->
+    <string name="img_backdrop">Backdrop Path</string>
+    <string name="img_cast">Cast Profile Path</string>
+    <string name="img_crew">Crew Profile Path</string>
+
+    <!--MainMenuActivity.java-->
     <string name="search">Search</string>
     <string name="now_playing">Now Playing</string>
     <string name="up_coming">Up Coming</string>
@@ -13,34 +18,29 @@
     <string name="movie_id">Movie ID</string>
     <string name="null_movie_id">Movie ID is not available in MovieDB.</string>
 
-    <!--NowPlayingActivity.java-->
+    <!--NowPlayingFragment.java-->
     <string name="txt_title">Title</string>
     <string name="lbl_title">%sTitle</string>
     <string name="txt_overview">Overview</string>
     <string name="lbl_overview">%sOverview</string>
     <string name="lbl_release_date">%sRelease Date</string>
 
-    <!--MovieDetailsActivity.java-->
+    <!--MovieDetailsFragment.java-->
     <string name="txt_movie_details">Movie Details</string>
     <string name="lbl_rating">%sRating</string>
     <string name="lbl_vote_count">%sVote Count</string>
     <string name="lbl_popularity">%sPopularity</string>
     <string name="lbl_runtime">%sRuntime</string>
-    <string name="lbl_video">%sVideo</string>
-    <string name="lbl_adult">%sAdult</string>
     <string name="txt_language">Spoken Language</string>
     <string name="lbl_language">%sSpoken Language</string>
     <string name="txt_genre">Genre</string>
     <string name="lbl_genre">%sGenre</string>
     <string name="txt_tagline">Tagline</string>
     <string name="lbl_tagline">%sTagline</string>
-    <string name="lbl_character_name">Character Name</string>
-    <string name="lbl_cast_name">Cast Name</string>
+    <string name="lbl_cast_name">%sCast Name</string>
+    <string name="lbl_character_name">%sCharacter Name</string>
+    <string name="lbl_crew_name">%sCrew Name</string>
+    <string name="lbl_role_name">%sRole Name</string>
     <string name="txt_production_companies">Production Companies</string>
     <string name="btn_homepage">Visit Homepage</string>
-    <string name="img_backdrop">Backdrop Path</string>
-    <string name="img_cast">Profile Path</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>

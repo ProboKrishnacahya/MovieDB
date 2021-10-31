@@ -179,36 +179,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/linearLayout_video_adult_movie_details"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout_id_runtime_movie_details"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout_id_runtime_movie_details"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_id_runtime_movie_details">
-
-                <TextView
-                    android:id="@+id/lbl_video_movie_details"
-                    style="@style/MovieDBTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="0dp"
-                    android:paddingEnd="16dp"
-                    android:text="@string/lbl_video"
-                    android:textColor="@color/colorTextPrimary" />
-
-                <TextView
-                    android:id="@+id/lbl_adult_movie_details"
-                    style="@style/MovieDBTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="8dp"
-                    android:text="@string/lbl_adult"
-                    android:textColor="@color/colorTextPrimary" />
-            </LinearLayout>
-
             <View
                 android:id="@+id/divider1_movie_details"
                 android:layout_width="0dp"

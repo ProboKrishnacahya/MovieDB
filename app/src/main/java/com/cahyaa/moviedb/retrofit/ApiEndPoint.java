@@ -40,7 +40,8 @@ public interface ApiEndPoint {
 
     @GET("movie/popular")
     Call<Popular> getPopular(
-            @Query("api_key") String apiKey
+            @Query("api_key") String apiKey,
+            @Query("page") int page
     );
 
     @GET("movie/{movie_id}/videos")
