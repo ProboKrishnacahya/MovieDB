@@ -12,6 +12,6 @@
 
     <item
         android:id="@+id/popularFragment"
-        android:icon="@drawable/bot_nav_up_coming"
+        android:icon="@drawable/popularity"
         android:title="@string/popular" />
 </menu>

@@ -4,6 +4,7 @@ import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.model.NowPlaying;
 import com.cahyaa.moviedb.model.Popular;
+import com.cahyaa.moviedb.model.Search;
 import com.cahyaa.moviedb.model.UpComing;
 import com.cahyaa.moviedb.model.Videos;
 
@@ -46,5 +47,11 @@ public interface ApiEndPoint {
     Call<Videos> getVideos(
             @Path("movie_id") String movieId,
             @Query("api_key") String apiKey
+    );
+
+    @GET("search/movie")
+    Call<Search> getMovieResult(
+            @Query("api_key") String apiKey,
+            @Query("query") String query
     );
 }

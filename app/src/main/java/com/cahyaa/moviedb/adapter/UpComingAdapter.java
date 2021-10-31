@@ -25,7 +25,7 @@ public class UpComingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Context context;
     private List<UpComing.Results> listUpComing;
 
-    private List<UpComing.Results> getListUpComing() {
+    public List<UpComing.Results> getListUpComing() {
         return listUpComing;
     }
 
@@ -77,7 +77,7 @@ public class UpComingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return getListUpComing().size();
     }
 
-    public class CardViewViewHolder extends RecyclerView.ViewHolder {
+    public static class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView img_poster;
         TextView lbl_title, lbl_overview, lbl_release_date;
         CardView cv;

@@ -7,6 +7,7 @@ import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.model.NowPlaying;
 import com.cahyaa.moviedb.model.Popular;
+import com.cahyaa.moviedb.model.Search;
 import com.cahyaa.moviedb.model.UpComing;
 import com.cahyaa.moviedb.model.Videos;
 import com.cahyaa.moviedb.retrofit.ApiService;
@@ -130,6 +131,24 @@ public class MovieRepository {
 
             @Override
             public void onFailure(Call<Videos> call, Throwable t) {
+
+            }
+        });
+
+        return result;
+    }
+
+    public MutableLiveData<Search> getSearchData(String query) {
+        final MutableLiveData<Search> result = new MutableLiveData<>();
+
+        ApiService.endPoint().getMovieResult(Const.API_KEY, query).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                result.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
 
             }
         });

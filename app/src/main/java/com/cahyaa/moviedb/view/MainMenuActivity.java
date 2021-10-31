@@ -1,6 +1,8 @@
 package com.cahyaa.moviedb.view;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     NavHostFragment navHostFragment;
 
+    MenuItem menuItem;
+
     boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -40,9 +44,16 @@ public class MainMenuActivity extends AppCompatActivity {
         navHostFragment.getNavController().addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                if (destination.getId() == R.id.nowPlayingFragment || destination.getId() == R.id.upComingFragment || destination.getId() == R.id.movieDetailsFragment) {
+                if (destination.getId() == R.id.nowPlayingFragment || destination.getId() == R.id.upComingFragment) {
                     binding.toolbarMainMenu.setVisibility(View.VISIBLE);
                     binding.bottomNavMainMenu.setVisibility(View.VISIBLE);
+                    if (menuItem != null) {
+                        menuItem.setVisible(true);
+                    }
+                } else if (destination.getId() == R.id.movieDetailsFragment) {
+                    binding.toolbarMainMenu.setVisibility(View.VISIBLE);
+                    binding.bottomNavMainMenu.setVisibility(View.GONE);
+                    menuItem.setVisible(false);
                 } else {
                     binding.toolbarMainMenu.setVisibility(View.GONE);
                     binding.bottomNavMainMenu.setVisibility(View.GONE);
@@ -56,7 +67,22 @@ public class MainMenuActivity extends AppCompatActivity {
         return navHostFragment.getNavController().navigateUp() || super.onSupportNavigateUp();
     }
 
-//    @Override
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu, menu);
+        menuItem = menu.findItem(R.id.toolbar_search);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.toolbar_search) {
+            navHostFragment.getNavController().navigate(R.id.searchFragment);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    //    @Override
 //    public void onBackPressed() {
 //        if (doubleBackToExitPressedOnce) {
 //            super.onBackPressed();

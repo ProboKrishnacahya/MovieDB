@@ -101,11 +101,11 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/img_poster_movie_details_fragment"
-                android:layout_width="120dp"
-                android:layout_height="170dp"
-                android:layout_marginStart="16dp"
+                android:layout_width="130dp"
+                android:layout_height="180dp"
                 android:layout_marginTop="16dp"
                 android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_backdrop_movie_details_fragment"
                 app:shapeAppearanceOverlay="@style/MovieDBImageView"
@@ -117,20 +117,22 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/lbl_title"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_poster_movie_details_fragment"
-                app:layout_constraintTop_toTopOf="@+id/img_poster_movie_details_fragment" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_poster_movie_details_fragment" />
 
             <LinearLayout
-                android:id="@+id/linearLayout_id_release_date_movie_details_fragment"
-                android:layout_width="wrap_content"
+                android:id="@+id/linearLayout_release_date_runtime_id_movie_details_fragment"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_title_movie_details_fragment"
                 app:layout_constraintStart_toStartOf="@+id/lbl_title_movie_details_fragment"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_title_movie_details_fragment">
 
@@ -147,18 +149,6 @@
                     android:textColor="@color/colorTextPrimary"
                     app:drawableStartCompat="@drawable/release_date"
                     app:drawableTint="@color/colorPrimary" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout_id_runtime_movie_details_fragment"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_title_movie_details_fragment"
-                app:layout_constraintStart_toStartOf="@+id/lbl_title_movie_details_fragment"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_id_release_date_movie_details_fragment">
 
                 <TextView
                     android:id="@+id/lbl_runtime_movie_details_fragment"
@@ -202,7 +192,23 @@
                 android:backgroundTintMode="add"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_poster_movie_details_fragment" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_release_date_runtime_id_movie_details_fragment" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view_movie_details_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:keepScreenOn="true"
+                android:soundEffectsEnabled="true"
+                app:autoPlay="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider1_movie_details_fragment"
+                app:showFullScreenButton="true"
+                app:showSeekBar="true" />
 
             <LinearLayout
                 android:id="@+id/linearLayout_language_movie_details_fragment"
@@ -215,7 +221,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider1_movie_details_fragment">
+                app:layout_constraintTop_toBottomOf="@+id/youtube_player_view_movie_details_fragment">
 
                 <TextView
                     android:id="@+id/txt_language_movie_details_fragment"
@@ -331,10 +337,10 @@
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_credits" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_credits_fragment" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_credits"
+                android:id="@+id/rv_credits_fragment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -365,21 +371,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" />
             </HorizontalScrollView>
-
-            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:id="@+id/youtube_player_view_movie_details_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="32dp"
-                app:layout_constraintBottom_toTopOf="@id/btn_homepage_movie_details_fragment"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
-                app:autoPlay="false"
-                app:showFullScreenButton="false" />
 
             <Button
                 android:id="@+id/btn_homepage_movie_details_fragment"

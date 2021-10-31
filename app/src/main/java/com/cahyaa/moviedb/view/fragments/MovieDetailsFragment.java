@@ -42,11 +42,11 @@ public class MovieDetailsFragment extends Fragment {
     private String movie_genre = "";
 
     private TextView lbl_rating, lbl_vote_count, lbl_popularity, lbl_title, lbl_release_date, lbl_runtime, lbl_id, lbl_language, lbl_genre, lbl_tagline, lbl_overview;
-    private ImageView img_backdrop, img_poster, img_production_companies;
-    private Button btn_homepage_movie_details_fragment;
+    private ImageView img_backdrop, img_poster;
+    private YouTubePlayerView youtube_player_view;
     private RecyclerView rv_credits;
     private LinearLayout linearLayout_production_companies;
-    private YouTubePlayerView youtube_player_view;
+    private Button btn_homepage_movie_details_fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,14 +62,14 @@ public class MovieDetailsFragment extends Fragment {
         lbl_release_date = view.findViewById(R.id.lbl_release_date_movie_details_fragment);
         lbl_runtime = view.findViewById(R.id.lbl_runtime_movie_details_fragment);
         lbl_id = view.findViewById(R.id.lbl_id_movie_details_fragment);
+        youtube_player_view = view.findViewById(R.id.youtube_player_view_movie_details_fragment);
         lbl_language = view.findViewById(R.id.lbl_language_movie_details_fragment);
         lbl_genre = view.findViewById(R.id.lbl_genre_movie_details_fragment);
         lbl_tagline = view.findViewById(R.id.lbl_tagline_movie_details_fragment);
         lbl_overview = view.findViewById(R.id.lbl_overview_movie_details_fragment);
-        rv_credits = view.findViewById(R.id.rv_credits);
-        btn_homepage_movie_details_fragment = view.findViewById(R.id.btn_homepage_movie_details_fragment);
+        rv_credits = view.findViewById(R.id.rv_credits_fragment);
         linearLayout_production_companies = view.findViewById(R.id.linearLayout_production_companies_movie_details_fragment);
-        youtube_player_view = view.findViewById(R.id.youtube_player_view_movie_details_fragment);
+        btn_homepage_movie_details_fragment = view.findViewById(R.id.btn_homepage_movie_details_fragment);
 
         movie_id = getArguments().getString("movieId");
 
@@ -99,12 +99,16 @@ public class MovieDetailsFragment extends Fragment {
             lbl_vote_count.setText(String.valueOf(movies.getVote_count()));
             lbl_popularity.setText(String.valueOf(movies.getPopularity()));
 
-            String poster_path = Const.IMG_URL + movies.getPoster_path().toString();
-            Glide.with(getActivity()).load(poster_path).into(img_poster);
+            if (movies.getPoster_path() != null) {
+                String poster_path = Const.IMG_URL + movies.getPoster_path().toString();
+                Glide.with(getActivity()).load(poster_path).into(img_poster);
+            } else {
+                Glide.with(getActivity()).load(R.drawable.poster_backdrop).into(img_poster);
+            }
 
             lbl_title.setText(movies.getTitle());
             lbl_release_date.setText(movies.getRelease_date());
-            lbl_runtime.setText(String.valueOf(movies.getRuntime() + "'"));
+            lbl_runtime.setText(movies.getRuntime() + "'");
             lbl_id.setText(movie_id);
 
             for (int i = 0; i < movies.getSpoken_languages().size(); i++) {
@@ -186,8 +190,12 @@ public class MovieDetailsFragment extends Fragment {
             youtube_player_view.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
                 @Override
                 public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                    String videoId = videos.getResults().get(0).getKey();
-                    youTubePlayer.loadVideo(videoId, 0);
+                    if (!videos.getResults().isEmpty()) {
+                        String videoId = videos.getResults().get(0).getKey();
+                        youTubePlayer.loadVideo(videoId, 0);
+                    } else {
+                        youtube_player_view.setVisibility(View.GONE);
+                    }
                 }
             });
         }

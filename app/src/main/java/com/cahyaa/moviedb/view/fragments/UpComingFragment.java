@@ -69,6 +69,23 @@ public class UpComingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ItemClickSupport.addTo(binding.rvUpComingFragment).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
+                Toast.makeText(getActivity(), "Upcoming Movie", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        ItemClickSupport.addTo(binding.rvUpComingFragment).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("movieId", "" + adapter.getListUpComing().get(position).getId());
+                Navigation.findNavController(v).navigate(R.id.action_upComingFragment_to_movieDetailsFragment, bundle);
+            }
+        });
     }
 
     private Observer<UpComing> showUpComing = new Observer<UpComing>() {
@@ -76,23 +93,6 @@ public class UpComingFragment extends Fragment {
         public void onChanged(UpComing upComing) {
             adapter.setLoading(false);
             adapter.updateList(upComing.getResults());
-
-            ItemClickSupport.addTo(binding.rvUpComingFragment).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
-                    Toast.makeText(getActivity(), "Upcoming Movie", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            });
-
-            ItemClickSupport.addTo(binding.rvUpComingFragment).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-                @Override
-                public void onItemClicked(RecyclerView recyclerView, int page, View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("movieId", "" + upComing.getResults().get(page).getId());
-                    Navigation.findNavController(v).navigate(R.id.action_upComingFragment_to_movieDetailsFragment, bundle);
-                }
-            });
         }
     };
 

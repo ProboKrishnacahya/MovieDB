@@ -9,14 +9,16 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_main_menu"
+        style="@style/MovieDBNavigationIconToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextAppearance="@style/MovieDBTextView.Button"
-        app:titleTextColor="@color/colorTextPrimary" />
+        app:titleTextColor="@color/colorTextSecondary" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_fragment_main_menu"

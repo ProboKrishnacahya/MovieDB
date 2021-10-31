@@ -11,23 +11,27 @@
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/drawable/button.xml" value="0.13333333333333333" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/drawable/corner_radius_imageview.xml" value="0.1" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/drawable/production_companies.xml" value="0.12401315789473684" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/drawable/rating.xml" value="0.12434210526315789" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/drawable/rounded.xml" value="0.12434210526315789" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/drawable/search.xml" value="0.12434210526315789" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout-v23/activity_movie_details.xml" value="0.18072916666666666" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/activity_main_menu.xml" value="0.12" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/activity_main_menu.xml" value="0.1" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/activity_movie_details.xml" value="0.1" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/activity_now_playing.xml" value="0.16666666666666666" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/card_cast_movie_details.xml" value="0.16483516483516483" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/card_now_playing.xml" value="0.22" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/card_popular.xml" value="0.10997267759562841" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/card_up_coming.xml" value="0.22" />
-        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/fragment_movie_details.xml" value="0.14666666666666667" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/fragment_movie_details.xml" value="0.22" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/fragment_now_playing.xml" value="0.1" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/fragment_popular.xml" value="0.10997267759562841" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/fragment_search.xml" value="0.13333333333333333" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/fragment_splash_screen.xml" value="0.12" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/fragment_up_coming.xml" value="0.1" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/layout/layout_shimmer_effect.xml" value="0.10666666666666667" />
-        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/menu/main_menu.xml" value="0.22" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/menu/main_menu.xml" value="0.1" />
+        <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/menu/search_menu.xml" value="0.14666666666666667" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/MovieDB/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.12434210526315789" />
         <entry key="..\:/UC/1.IMT/1.Kelas_Mata_Kuliah/3.Semester_III/2.Mobile_Application_Development/1.Materi/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
       </map>
