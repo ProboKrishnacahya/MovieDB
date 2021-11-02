@@ -18,7 +18,7 @@ Fitur-fitur:
 <li>Popular Movies</li>
 </ol>
 
-<li>Setiap CardView pada RecyclerView di masing-masing Bottom Navigation Menu saat diklik dapat mengarahkan ke 1 halaman fragment yang sama, yaitu <b>MovieDetailsFragment</b>yang berisi data film berupa</li>
+<li>Setiap CardView pada RecyclerView di masing-masing Bottom Navigation Menu saat diklik dapat mengarahkan ke 1 halaman fragment yang sama, yaitu <b>MovieDetailsFragment</b> yang berisi data film berupa</li>
 <ol>
 <li>Backdrop</li>
 <li>Average Vote</li>
