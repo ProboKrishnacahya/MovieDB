@@ -11,7 +11,7 @@ Aplikasi Mobile berbasis OS Android tentang Katalog Film (Now Playing, Upcoming,
 
 Fitur-fitur:
 
-<li><b>Bottom Navigation Menu</b> berisi 3 Fragment yang memiliki EndlessRecyclerScrollView + Loading Indicator Shimmer Effect, yaitu</li>
+<li><b>Bottom Navigation Menu</b> berisi 3 Fragment yang memiliki <b>EndlessRecyclerScrollView</b> + Loading Indicator <b>Shimmer Effect</b>, yaitu</li>
 <ol>
 <li>Now Playing Movies</li>
 <li>Upcoming Movies</li>
@@ -39,3 +39,5 @@ Fitur-fitur:
 <li>Production Companies (Logo + Companies Name)</li>
 <li>Homepage</li>
 </ol>
+
+<li>Toolbar pada masing-masing Bottom Navigation berisi label menu + tombol ikon Search yang saat diklik dapat mengarahkan ke 1 halaman fragment yang sama, yaitu <b>SearchFragment</b> untuk pencarian judul Film.</li>
