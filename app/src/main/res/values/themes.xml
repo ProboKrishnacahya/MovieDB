@@ -7,6 +7,6 @@
         <item name="colorOnSecondary">@color/colorTextPrimary</item>
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/colorBackground</item>
-        <item name="drawerArrowStyle">@style/MovieDBNavigationIconToolbar</item>
+        <item name="drawerArrowStyle">@style/MovieDBToolbar.NavigationIcon</item>
     </style>
 </resources>

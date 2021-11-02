@@ -1,9 +1,11 @@
 package com.cahyaa.moviedb.view.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,7 @@ import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.model.Videos;
+import com.cahyaa.moviedb.view.LoadingDialog;
 import com.cahyaa.moviedb.viewmodel.MovieViewModel;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -47,7 +50,8 @@ public class MovieDetailsFragment extends Fragment {
     private YouTubePlayerView youtube_player_view;
     private RecyclerView rv_cast, rv_crew;
     private LinearLayout linearLayout_production_companies;
-    private Button btn_homepage_movie_details_fragment;
+    private Button btn_homepage;
+    Dialog dialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,7 +75,7 @@ public class MovieDetailsFragment extends Fragment {
         rv_cast = view.findViewById(R.id.rv_cast_fragment);
         rv_crew = view.findViewById(R.id.rv_crew_fragment);
         linearLayout_production_companies = view.findViewById(R.id.linearLayout_production_companies_movie_details_fragment);
-        btn_homepage_movie_details_fragment = view.findViewById(R.id.btn_homepage_movie_details_fragment);
+        btn_homepage = view.findViewById(R.id.btn_homepage_movie_details_fragment);
 
         movie_id = getArguments().getString("movieId");
 
@@ -82,6 +86,9 @@ public class MovieDetailsFragment extends Fragment {
         view_model.getResultGetCredits().observe(getActivity(), showResultCredits);
         view_model.getVideos(movie_id);
         view_model.getResultGetVideos().observe(getActivity(), showResultVideos);
+
+        dialog = LoadingDialog.loadingDialog(getActivity());
+        dialog.show();
 
         return view;
     }
@@ -143,7 +150,7 @@ public class MovieDetailsFragment extends Fragment {
                 lbl_overview.setText(movies.getOverview());
             }
 
-            btn_homepage_movie_details_fragment.setOnClickListener(new View.OnClickListener() {
+            btn_homepage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(movies.getHomepage())));
@@ -171,19 +178,13 @@ public class MovieDetailsFragment extends Fragment {
                         toast.show();
                     }
                 });
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.cancel();
+                    }
+                }, 2000);
             }
-        }
-    };
-
-    private Observer<Credits> showResultCredits = new Observer<Credits>() {
-        @Override
-        public void onChanged(Credits credits) {
-            CastAdapter castAdapter = new CastAdapter(getActivity());
-            CrewAdapter crewAdapter = new CrewAdapter(getActivity());
-            castAdapter.setListNowPlaying(credits.getCast());
-            crewAdapter.setListNowPlaying(credits.getCrew());
-            rv_cast.setAdapter(castAdapter);
-            rv_crew.setAdapter(crewAdapter);
         }
     };
 
@@ -203,6 +204,18 @@ public class MovieDetailsFragment extends Fragment {
                     }
                 }
             });
+        }
+    };
+
+    private Observer<Credits> showResultCredits = new Observer<Credits>() {
+        @Override
+        public void onChanged(Credits credits) {
+            CastAdapter castAdapter = new CastAdapter(getActivity());
+            CrewAdapter crewAdapter = new CrewAdapter(getActivity());
+            castAdapter.setListNowPlaying(credits.getCast());
+            crewAdapter.setListNowPlaying(credits.getCrew());
+            rv_cast.setAdapter(castAdapter);
+            rv_crew.setAdapter(crewAdapter);
         }
     };
 

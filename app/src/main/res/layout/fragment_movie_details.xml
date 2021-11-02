@@ -28,6 +28,7 @@
                 android:id="@+id/img_backdrop_movie_details_fragment"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:contentDescription="@string/img_backdrop"
                 android:foreground="@drawable/gradient_foreground"
                 app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintEnd_toEndOf="parent"

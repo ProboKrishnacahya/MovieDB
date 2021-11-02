@@ -43,4 +43,5 @@
     <string name="lbl_role_name">%sRole Name</string>
     <string name="txt_production_companies">Production Companies</string>
     <string name="btn_homepage">Visit Homepage</string>
+    <string name="progbar_loading">Loading..</string>
 </resources>

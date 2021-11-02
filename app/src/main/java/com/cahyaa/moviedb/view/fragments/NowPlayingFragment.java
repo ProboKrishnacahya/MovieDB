@@ -35,7 +35,6 @@ public class NowPlayingFragment extends Fragment {
 
     private int page = 1;
 
-    // Store a member variable for the listener
     private EndlessRecyclerViewScrollListener scrollListener;
 
     @Override
@@ -49,12 +48,11 @@ public class NowPlayingFragment extends Fragment {
         adapter.setListNowPlaying(new ArrayList<>());
         binding.rvNowPlayingFragment.setAdapter(adapter);
 
-        // Retain an instance so that you can call `resetState()` for fresh searches
+        // Mempertahankan instance sehingga dapat memanggil `resetState()` untuk pencarian baru
         scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                // Triggered only when new data needs to be appended to the list
-                // Append new items to the bottom of the list
+                // Dipicu hanya ketika data baru perlu ditambahkan ke daftar + tambahkan item baru ke bagian bawah daftar
                 adapter.setLoading(true);
                 loadNextDataFromApi(page);
             }
