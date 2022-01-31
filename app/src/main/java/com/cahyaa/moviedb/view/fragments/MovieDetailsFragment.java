@@ -1,11 +1,10 @@
 package com.cahyaa.moviedb.view.fragments;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -29,8 +29,9 @@ import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.Credits;
 import com.cahyaa.moviedb.model.Movies;
 import com.cahyaa.moviedb.model.Videos;
-import com.cahyaa.moviedb.view.LoadingDialog;
 import com.cahyaa.moviedb.viewmodel.MovieViewModel;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
@@ -43,15 +44,15 @@ public class MovieDetailsFragment extends Fragment {
 
     private String movie_id = "";
     private String spoken_language = "";
-    private String movie_genre = "";
 
     private TextView lbl_rating, lbl_vote_count, lbl_popularity, lbl_title, lbl_release_date, lbl_runtime, lbl_id, lbl_language, lbl_genre, lbl_tagline, lbl_overview;
     private ImageView img_backdrop, img_poster;
     private YouTubePlayerView youtube_player_view;
+    private ChipGroup cg_genre;
     private RecyclerView rv_cast, rv_crew;
     private LinearLayout linearLayout_production_companies;
     private Button btn_homepage;
-    Dialog dialog;
+//    Dialog dialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,7 +70,7 @@ public class MovieDetailsFragment extends Fragment {
         lbl_id = view.findViewById(R.id.lbl_id_movie_details_fragment);
         youtube_player_view = view.findViewById(R.id.youtube_player_view_movie_details_fragment);
         lbl_language = view.findViewById(R.id.lbl_language_movie_details_fragment);
-        lbl_genre = view.findViewById(R.id.lbl_genre_movie_details_fragment);
+        cg_genre = view.findViewById(R.id.cg_genre_movie_details_fragment);
         lbl_tagline = view.findViewById(R.id.lbl_tagline_movie_details_fragment);
         lbl_overview = view.findViewById(R.id.lbl_overview_movie_details_fragment);
         rv_cast = view.findViewById(R.id.rv_cast_fragment);
@@ -87,8 +88,8 @@ public class MovieDetailsFragment extends Fragment {
         view_model.getVideos(movie_id);
         view_model.getResultGetVideos().observe(getActivity(), showResultVideos);
 
-        dialog = LoadingDialog.loadingDialog(getActivity());
-        dialog.show();
+//        dialog = LoadingDialog.loadingDialog(getActivity());
+//        dialog.show();
 
         return view;
     }
@@ -111,6 +112,15 @@ public class MovieDetailsFragment extends Fragment {
             if (movies.getPoster_path() != null) {
                 String poster_path = Const.IMG_URL + movies.getPoster_path().toString();
                 Glide.with(getActivity()).load(poster_path).into(img_poster);
+                img_poster.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast toast = Toast.makeText(getContext(), "Poster", Toast.LENGTH_SHORT);
+                        toast.show();
+//                        Bundle bundle = new Bundle();
+//                        Navigation.findNavController(v).navigate(R.id.action_movieDetailsFragment_to_imagePreviewFragment, bundle);
+                    }
+                });
             } else {
                 Glide.with(getActivity()).load(R.drawable.poster_backdrop).into(img_poster);
             }
@@ -129,14 +139,14 @@ public class MovieDetailsFragment extends Fragment {
             }
             lbl_language.setText(spoken_language);
 
+            Chip chip;
             for (int i = 0; i < movies.getGenres().size(); i++) {
-                if (i == movies.getGenres().size() - 1) {
-                    movie_genre += movies.getGenres().get(i).getName();
-                } else {
-                    movie_genre += movies.getGenres().get(i).getName() + " | ";
-                }
+                chip = new Chip(cg_genre.getContext());
+                Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.rubik);
+                chip.setTypeface(typeface);
+                chip.setText(movies.getGenres().get(i).getName());
+                cg_genre.addView(chip);
             }
-            lbl_genre.setText(movie_genre);
 
             if (movies.getTagline().isEmpty()) {
                 lbl_tagline.setText("-");
@@ -147,8 +157,11 @@ public class MovieDetailsFragment extends Fragment {
             if (movies.getOverview().isEmpty()) {
                 lbl_overview.setText("-");
             } else {
+
                 lbl_overview.setText(movies.getOverview());
             }
+            Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.rubik);
+            lbl_overview.setTypeface(typeface);
 
             btn_homepage.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -170,20 +183,21 @@ public class MovieDetailsFragment extends Fragment {
                 lp.setMargins(0, 0, 16, 0);
                 img_production_companies.setLayoutParams(lp);
                 linearLayout_production_companies.addView(img_production_companies);
-                img_production_companies.setOnClickListener(new View.OnClickListener() {
+                img_production_companies.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public boolean onLongClick(View view) {
                         Toast toast = Toast.makeText(getContext(), production_companies_name, Toast.LENGTH_SHORT);
                         toast.setText(production_companies_name);
                         toast.show();
+                        return false;
                     }
                 });
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        dialog.cancel();
-                    }
-                }, 2000);
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        dialog.cancel();
+//                    }
+//                }, 2000);
             }
         }
     };

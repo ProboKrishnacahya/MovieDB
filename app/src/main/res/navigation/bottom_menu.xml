@@ -68,6 +68,16 @@
             android:name="movieId"
             android:defaultValue="-"
             app:argType="string" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_imagePreviewFragment"
+            app:destination="@id/imagePreviewFragment"
+            />
     </fragment>
+
+    <fragment
+        android:id="@+id/imagePreviewFragment"
+        android:name="com.cahyaa.moviedb.view.fragments.ImagePreviewFragment"
+        android:label="fragment_image_preview"
+        tools:layout="@layout/fragment_image_preview" />
 
 </navigation>

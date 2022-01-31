@@ -40,7 +40,7 @@
         android:layout_height="56dp"
         app:itemTextAppearanceActive="@style/MovieDBTextView"
         app:itemTextAppearanceInactive="@style/MovieDBTextView"
-        app:labelVisibilityMode="selected"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

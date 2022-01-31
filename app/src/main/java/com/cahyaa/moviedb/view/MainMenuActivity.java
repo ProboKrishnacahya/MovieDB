@@ -6,10 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -41,23 +38,20 @@ public class MainMenuActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navHostFragment.getNavController(), appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavMainMenu, navHostFragment.getNavController());
 
-        navHostFragment.getNavController().addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-            @Override
-            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                if (destination.getId() == R.id.nowPlayingFragment || destination.getId() == R.id.upComingFragment || destination.getId() == R.id.popularFragment) {
-                    binding.toolbarMainMenu.setVisibility(View.VISIBLE);
-                    binding.bottomNavMainMenu.setVisibility(View.VISIBLE);
-                    if (menuItem != null) {
-                        menuItem.setVisible(true);
-                    }
-                } else if (destination.getId() == R.id.movieDetailsFragment) {
-                    binding.toolbarMainMenu.setVisibility(View.VISIBLE);
-                    binding.bottomNavMainMenu.setVisibility(View.GONE);
-                    menuItem.setVisible(false);
-                } else {
-                    binding.toolbarMainMenu.setVisibility(View.GONE);
-                    binding.bottomNavMainMenu.setVisibility(View.GONE);
+        navHostFragment.getNavController().addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.nowPlayingFragment || destination.getId() == R.id.upComingFragment || destination.getId() == R.id.popularFragment) {
+                binding.toolbarMainMenu.setVisibility(View.VISIBLE);
+                binding.bottomNavMainMenu.setVisibility(View.VISIBLE);
+                if (menuItem != null) {
+                    menuItem.setVisible(true);
                 }
+            } else if (destination.getId() == R.id.movieDetailsFragment) {
+                binding.toolbarMainMenu.setVisibility(View.VISIBLE);
+                binding.bottomNavMainMenu.setVisibility(View.GONE);
+                menuItem.setVisible(false);
+            } else {
+                binding.toolbarMainMenu.setVisibility(View.GONE);
+                binding.bottomNavMainMenu.setVisibility(View.GONE);
             }
         });
     }

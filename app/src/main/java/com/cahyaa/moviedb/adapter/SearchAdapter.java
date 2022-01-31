@@ -4,15 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cahyaa.moviedb.R;
+import com.cahyaa.moviedb.databinding.CardNowPlayingBinding;
 import com.cahyaa.moviedb.helper.Const;
 import com.cahyaa.moviedb.model.Search;
 
@@ -39,18 +37,19 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.CardViewVi
 
     @NonNull
     @Override
-    public CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SearchAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_now_playing, parent, false);
-        return new CardViewViewHolder(view);
+        return new SearchAdapter.CardViewViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SearchAdapter.CardViewViewHolder holder, int position) {
+        CardNowPlayingBinding binding = CardNowPlayingBinding.bind(holder.itemView);
         final Search.Results results = getListSearch().get(position);
-        holder.lbl_title.setText(results.getTitle());
-        holder.lbl_overview.setText(results.getOverview());
-        holder.lbl_release_date.setText(results.getRelease_date());
-        Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
+        Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(binding.imgPosterCardNowplaying);
+        binding.lblTitleCardNowplaying.setText(results.getTitle());
+        binding.lblOverviewCardNowplaying.setText(results.getOverview());
+        binding.lblReleasedateCardNowplaying.setText(results.getRelease_date());
     }
 
     @Override
@@ -58,18 +57,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.CardViewVi
         return getListSearch().size();
     }
 
-    public static class CardViewViewHolder extends RecyclerView.ViewHolder {
-        ImageView img_poster;
-        TextView lbl_title, lbl_overview, lbl_release_date;
-        CardView cv;
-
+    public class CardViewViewHolder extends RecyclerView.ViewHolder {
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            img_poster = itemView.findViewById(R.id.img_poster_card_nowplaying);
-            lbl_title = itemView.findViewById(R.id.lbl_title_card_nowplaying);
-            lbl_overview = itemView.findViewById(R.id.lbl_overview_card_nowplaying);
-            lbl_release_date = itemView.findViewById(R.id.lbl_releasedate_card_nowplaying);
-            cv = itemView.findViewById(R.id.cv_card_nowplaying);
         }
     }
 

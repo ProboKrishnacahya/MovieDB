@@ -116,10 +116,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public void updateList(List<NowPlaying.Results> newList) {
-//        List<NowPlaying.Results> list = new ArrayList<>();
-//        list.addAll(listNowPlaying);
         listNowPlaying.addAll(newList);
         notifyDataSetChanged();
-//        notifyItemRangeInserted(listNowPlaying.size(), list.size());
     }
 }

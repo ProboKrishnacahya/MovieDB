@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Application Name-->
     <string name="app_name">MovieDB</string>
 
     <!--ImageView android:contentDescription-->
